@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* =====================
+          NAV
+========================*/
+.menu-carrito {
+  height: 80px;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contenedor-logo, .contenedor-carrito {
+  height: 40px;
+  width: 200px;
+  background-color: brown;
+  margin: 0 30px;
+}
+
+/* =====================
+          hEADER
+========================*/
+.contenedor-titulo-principal {
+  height: 300px;
+  background-color: cadetblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.3);
+  margin-bottom: 40px;
+}
