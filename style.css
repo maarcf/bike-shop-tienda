@@ -47,6 +47,32 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding: 0 30px;
+}
+.contenedor-titulo-aside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.contenedor-busqueda {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulos-filtros {
+  padding: 20px 0;
+}
+
+.filtrar-por-categoria, .filtrar-por-puntuacion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.checkbox {
+  padding-bottom: 5px;
 }
 
 .productos-seccion-principal {
