@@ -6,14 +6,21 @@
   <link rel="stylesheet" href="style.css">
   <!-- Links de iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-  <title>Tienda Online</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <title>Bike Shop: tienda online</title>
 </head>
 <body>
 
   <!-- Menu Superior -->
   <nav class="menu-carrito">
-    <div class="contenedor-logo"></div>
-    <div class="contenedor-carrito"></div>
+    <div class="contenedor-logo">
+      <img src="img/logo-tienda.png" alt="Logo de la tienda Bike Shop">
+    </div>
+    <button class="contenedor-carrito">
+      <i class="fas fa-shopping-cart"></i>
+      <h4>Carrito (<span id="carrito-cantidad-productos">0</span> items)</h4>
+    </button>
   </nav>
   
   <!-- Header -->
@@ -22,42 +29,45 @@
   </header>
 
   <!-- Sección principal -->
-  <div class="seccion-principal">
+  <main class="seccion-principal">
     <aside class="filtros-busqueda">
-      <div class="contenedor-titulo-aside">
-        <h2 class="titulo-aside">FILTROS</h2>
-        <button>Limpiar</button>
-      </div>
-
-      <form action="" method="GET">
-        <div class="contenedor-busqueda">
-          <h3 class="titulos-filtros">BUSQUEDA</h3>
+      <form id="formulario-filtro" action="" method="GET">
+        <div class="contenedor-titulo-aside">
+          <h2 class="titulo-aside">FILTROS</h2>
+          <button id="boton-filtro-aside">
+            <i class="fas fa-trash-alt"></i>
+            Limpiar
+          </button>
+        </div>
+  
+        <fieldset class="contenedor-busqueda">
+          <legend class="titulos-filtros">BUSQUEDA</legend>
           <label for="search">
             <input type="text" placeholder="Buscar productos" name="search" id="search">
           </label>
-        </div>
+        </fieldset>
 
-        <div class="filtrar-por-categoria">
-          <h3 class="titulos-filtros">CATEGORIA</h3>
+        <fieldset class="filtrar-por-categoria">
+          <legend class="titulos-filtros">CATEGORIA</legend>
             <label class="checkbox" for="category">
               <input type="checkbox" name="category" id="category"> CONSOLAS
             </label>
             <label class="checkbox" for="category">
-              <input type="checkbox" name="category" id="category"> NOTEBOOKS
+              <input type="checkbox" name="category"> NOTEBOOKS
             </label>
             <label class="checkbox" for="category">
-              <input type="checkbox" name="category" id="category"> CÁMARAS
+              <input type="checkbox" name="category"> CÁMARAS
             </label>
             <label class="checkbox" for="category">
-              <input type="checkbox" name="category" id="category"> CELULARES
+              <input type="checkbox" name="category"> CELULARES
             </label>
             <label class="checkbox" for="category">
-              <input type="checkbox" name="category" id="category"> ACCESORIOS
+              <input type="checkbox" name="category"> ACCESORIOS
             </label>
-        </div>
+        </fieldset>
 
-        <div class="filtrar-por-puntuacion">
-          <h3 class="titulos-filtros">PUNTAJE</h3>
+        <fieldset class="filtrar-por-puntuacion">
+          <legend class="titulos-filtros">PUNTAJE</legend>
           <label class="checkbox" for="score">
             <input type="checkbox" name="score" id="score">
             <i class="fas fa-star"></i>
@@ -65,48 +75,54 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i> 
+            <p>(5)</p>
           </label>
           <label class="checkbox" for="score">
-            <input type="checkbox" name="score" id="score">
+            <input type="checkbox" name="score">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="far fa-star"></i>
+            <p>(4)</p>
           </label>
           <label class="checkbox" for="score">
-            <input type="checkbox" name="score" id="category">
+            <input type="checkbox" name="score">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="far fa-star"></i>
             <i class="far fa-star"></i>
+            <p>(3)</p>
           </label>
           <label class="checkbox" for="score">
-            <input type="checkbox" name="score" id="score">
+            <input type="checkbox" name="score">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="far fa-star"></i>
             <i class="far fa-star"></i>
             <i class="far fa-star"></i>
+            <p>(2)</p>
           </label>
           <label class="checkbox" for="score">
-            <input type="checkbox" name="score" id="score">
+            <input type="checkbox" name="score">
             <i class="fas fa-star"></i>
             <i class="far fa-star"></i>
             <i class="far fa-star"></i>
             <i class="far fa-star"></i>
             <i class="far fa-star"></i>
+            <p>(1)</p>
           </label>          
-        </div>
-    </form>
+        </fieldset>
+      </form>
+    
     </aside>
 
-    <div class="productos-seccion-principal">
+    <section class="productos-seccion-principal">
       <div class="contenedor-informacion"></div>
       <div class="contenedor-tarjetas"></div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script src="main.js"></script>
 </body>

@@ -1,9 +1,14 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+/* Reset Options */
 * {
   margin: 0;
   padding: 0;
 }
 body {
   background-color: #f5f5f5;
+  font-family: 'Lato', sans-serif;
 }
 /* =====================
           NAV
@@ -16,11 +21,34 @@ body {
   align-items: center;
 }
 .contenedor-logo, .contenedor-carrito {
-  height: 40px;
-  width: 200px;
+  flex-basis: 170px;
   background-color: brown;
   margin: 0 30px;
 }
+
+.contenedor-logo > img {
+  width: 100%;
+  height: auto;
+}
+
+.contenedor-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 10px 5px;
+}
+
+.contenedor-carrito > i {
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.contenedor-carrito > h4 {
+  font-size: 16px;
+  font-weight: 300;
+}
+
 
 /* =====================
           HEADER
@@ -41,6 +69,11 @@ body {
 .seccion-principal {
   display: flex;
   background-color: coral;  
+  height: 2000px;
+}
+#formulario-filtro {
+  position: sticky;
+  top: 20px;
 }
 .filtros-busqueda {
   background-color: yellowgreen; 
@@ -49,11 +82,16 @@ body {
   flex: 1;
   padding: 0 30px;
 }
+
 .contenedor-titulo-aside {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 30px 0;
+}
+
+fieldset {
+  border: none;
 }
 
 .contenedor-busqueda {
@@ -80,6 +118,6 @@ body {
   background-color: green; 
   display: flex;
   flex-direction: column;
-  flex: 4;
+  flex: 5;
   
 }
