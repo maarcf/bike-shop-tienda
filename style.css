@@ -30,6 +30,7 @@ body {
 }
 
 .contenedor-carrito {
+  cursor: pointer;
   background-color: #f5f5f5;
   display: flex;
   align-items: center;
@@ -80,11 +81,8 @@ body {
   background-color: coral;  
   height: 2000px;
 }
-#formulario-filtro {
-  position: sticky;
-  top: 20px;
-}
-.filtros-busqueda {
+
+.contenedor-filtros-productos {
   background-color: yellowgreen; 
   display: flex;
   flex-direction: column;
@@ -92,15 +90,16 @@ body {
   padding: 0 30px;
 }
 
+#formulario-filtro {
+  position: sticky;
+  top: 20px;
+}
+
 .contenedor-titulo-aside {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 30px 0;
-}
-
-fieldset {
-  border: none;
 }
 
 .contenedor-busqueda {
@@ -112,7 +111,8 @@ fieldset {
   padding: 20px 0;
 }
 
-.filtrar-por-categoria, .filtrar-por-puntuacion {
+.contenedor-filtro {
+  border: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,6 +120,23 @@ fieldset {
 
 .checkbox {
   padding-bottom: 5px;
+}
+
+.visually-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.visually-hidden:focus {
+  clip: auto;
+  height: auto;
+  overflow: auto;
+  position: absolute;
+  width: auto;
 }
 
 .productos-seccion-principal {
