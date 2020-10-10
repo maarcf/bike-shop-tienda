@@ -17,7 +17,7 @@
     <div class="contenedor-logo">
       <img src="img/logo-tienda.png" alt="Logo de la tienda Bike Shop">
     </div>
-    <button class="contenedor-carrito" aria-label="menu carrito">
+    <button id="boton-carrito" class="contenedor-icon carrito" aria-label="menu carrito">
       <i class="fas fa-shopping-cart" aria-hidden="true"></i>
       <h4>Carrito (<span id="carrito-cantidad-productos">0</span> items)</h4>
     </button>
@@ -33,17 +33,17 @@
   <!-- Sección principal -->
   <section class="seccion-principal">
     <aside class="contenedor-filtros-productos" aria-labelledby="formulario-filtro">
-      <form id="formulario-filtro" action="" method="GET">
+      <form id="formulario-filtro">
         <div class="contenedor-titulo-aside">
           <h2 class="titulo-aside">FILTROS</h2>
-          <button id="boton-filtro-aside" aria-label="limpiar filtros">
+          <button id="boton-limpiar-filtros" type="button" class="contenedor-icon" aria-label="limpiar filtros">
             <i class="fas fa-trash-alt" aria-hidden="true"></i>
             Limpiar
           </button>
         </div>
   
         <fieldset class="contenedor-filtro busqueda">
-          <legend class="titulos-filtros">BUSQUEDA</legend>
+          <legend class="titulos-filtros">BÚSQUEDA</legend>
           <label for="busqueda-por-nombre">
             <input type="text" placeholder="Buscar productos" name="busqueda" id="busqueda-por-nombre"/>
             <div class="contenedor-lupa">
@@ -139,8 +139,30 @@
     </aside>
 
     <main class="productos-seccion-principal">
-      <div class="contenedor-informacion"></div>
-      <div class="contenedor-tarjetas"></div>
+      <aside class="contenedor-informacion-navegacion">
+        <div class="contador-productos">
+          <p>Mostrando <span aria-live="polite" id="cantidad-productos-visibles">0</span> producto(s) de <span id="total-de-productos">20</span></p>
+        </div>
+
+        <div class="contenedor-botones-visualizacion-productos">
+          <p>Ver como</p>
+          <button id="boton-grilla" class="contenedor-icon" aria-label="vista grilla">
+            <i class="fas fa-th" aria-hidden="true"></i>
+          </button>
+          <button id="boton-lista" class="contenedor-icon" aria-label="vista lista">
+            <i class="fas fa-list" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <button id="boton-filtro" class="contenedor-icon filtro-media" aria-label="filtros">
+          <i class="fas fa-filter" aria-hidden="true"></i>
+          Filtros
+        </button>
+      </aside>
+
+      <section class="contenedor-tarjetas-productos">
+
+      </section>
     </main>
   </section>
 
