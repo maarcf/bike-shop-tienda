@@ -80,6 +80,7 @@ body {
 
 .seccion-principal {
   display: flex;
+  margin-bottom: 60px;
 }
 
 /* Aside Filtros */
@@ -265,7 +266,7 @@ input[type=text] {
 
 .contenedor-imagen > img:hover {
   transform: scale(1.5);
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .informacion-producto {
@@ -281,6 +282,7 @@ input[type=text] {
 }
 
 .informacion-producto > h2 {
+  font-size: 20px;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -302,7 +304,7 @@ input[type=text] {
   display: flex;
   align-items: center;
   color: #015D6F;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
   margin-bottom: 30px;
 }
@@ -323,7 +325,31 @@ input[type=text] {
   background-color: #a9a9a9;
 }
 
+/* =============================
+        FOOTER
+================================  */
+.footer {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+}
 
+.contenedor-logo-footer {
+  flex-basis: 120px;
+}
+.contenedor-logo-footer > img {
+  width: 100%;
+  height: auto;
+}
+
+.saludo {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1.2px;
+  margin-left: 35px;
+}
 
 
 
