@@ -208,8 +208,13 @@ input[type=text] {
   margin-right: 10px;
 }
 
+.contenedor-botones-visualizacion-productos > .contenedor-icon {
+  background-color: #fff;
+}
+
 .filtro-media {
   display: none;
+  background-color: #fff;
 }
 
 .contenedor-tarjetas-productos {
