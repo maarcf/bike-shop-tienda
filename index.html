@@ -626,10 +626,11 @@
   </footer>
 
   <!-- Seccion Checkout Carrito -->
-  <div class="overlay carrito-overlay"></div>
-  <section class="carrito-checkout" aria-modal="true" aria-label="Carrito de compras">
+  <div class="overlay carrito-overlay ocultar"></div>
+  <section class="carrito-checkout" aria-modal="true" role="dialog"
+   aria-label="Carrito de compras" aria-labelledby="carrito-compra">
     <div class="titular-carrito">
-      <h2>Carrito</h2>
+      <h2 id="carrito-compra">Carrito</h2>
       <button id="boton-cerrar-carrito" class="contenedor-icon" aria-label="Cerrar carrito">
         <i class="fas fa-times"></i>
       </button>            
@@ -691,7 +692,10 @@
     </div>
   </section>
 
+  <!-- PopUp Vaciar Carrito -->
+  <div class="overlay vaciar-carrito-overlay ocultar">
 
+  </div>
 
 
   <script src="main.js"></script>

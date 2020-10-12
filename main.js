@@ -12,7 +12,7 @@ const contadorProductosVisibles = () => {
   let agregarProducto = 0;
   // recorro cada tarjeta de producto
   for(let producto of todosLosProductos) {
-    // reviso que no tenga la agregada la clase ocultar
+    // reviso que no tenga agregada la clase ocultar
     if(producto.classList.contains('ocultar') === false) {
       // sumo un producto al contador
       agregarProducto++;
@@ -147,3 +147,39 @@ const grillaProductos = () => {
 botonGrilla.onclick = () => {
   grillaProductos();
 };
+
+
+
+// Abrir y Cerrar Carrito 
+const botonAbrirCarrito = document.getElementById('boton-carrito');
+const botonCerrarCarrito = document.getElementById('boton-cerrar-carrito');
+const carritoCompras = document.querySelector('.carrito-checkout');
+const overlayCarrito = document.querySelector('.carrito-overlay');
+
+
+botonAbrirCarrito.onclick = () => {
+mostrarCarrito();
+};
+
+// Aparece overlay, impide scroll, translada el carrito
+const mostrarCarrito = () => {
+  overlayCarrito.classList.remove('ocultar');
+  carritoCompras.classList.add('mostrar-carrito');
+  document.body.classList.add('no-scroll');
+};
+
+botonCerrarCarrito.onclick = () => {
+  cerrarCarrito();
+};
+
+// Oculta el overlay, permite el scroll y translada el carrito
+const cerrarCarrito = () => {
+  overlayCarrito.classList.add('ocultar');
+  carritoCompras.classList.remove('mostrar-carrito');
+  document.body.classList.remove('no-scroll');
+}
+
+
+
+
+// Vaciar carrito
