@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tienda Online dedicada al rubro del ciclismo. Vendemos bicibletas y componentes como también indumentaria y accesorios de ciclismo.">
   <link rel="stylesheet" href="style.css">
   <!-- Links de iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -17,7 +18,7 @@
     <div class="contenedor-logo">
       <img src="img/logo-tienda.png" alt="Logo de la tienda Bike Shop">
     </div>
-    <button id="boton-carrito" class="contenedor-icon carrito" aria-label="menu carrito">
+    <button id="boton-carrito" class="contenedor-icon carrito-btn" aria-label="menu carrito">
       <i class="fas fa-shopping-cart" aria-hidden="true"></i>
       <h4>Carrito (<span id="carrito-cantidad-productos">0</span> items)</h4>
     </button>
@@ -623,6 +624,75 @@
     </div>
     <p class="saludo">Gracias por elegirnos 😊</p>
   </footer>
+
+  <!-- Seccion Checkout Carrito -->
+  <div class="overlay carrito-overlay"></div>
+  <section class="carrito-checkout" aria-modal="true" aria-label="Carrito de compras">
+    <div class="titular-carrito">
+      <h2>Carrito</h2>
+      <button id="boton-cerrar-carrito" class="contenedor-icon" aria-label="Cerrar carrito">
+        <i class="fas fa-times"></i>
+      </button>            
+    </div>
+
+    <div class="detalle-productos-en-carrito">
+      <p>2 producto(s) agregado(s)</p>
+
+      <div class="listado-de-productos">
+        <article class="producto-a-comprar">
+          <div class="contenedor-imagen-carrito">
+            <img src="img/bicicleta-specialized-mtb.jpg" alt="Bicicleta MTB Specialized Modelo: Rockhopper Comp">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>Specialized MTB Rockhopper Comp</h2>
+              <button id="boton-borrar-producto" class="eliminar-producto" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" value="1">
+              </label>
+              <p class="precio-producto-carrito">$152139</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar">
+          <div class="contenedor-imagen-carrito">
+            <img src="img/zapatillas.jpg" alt="Zapatillas Shimano MOdelo SH-XC 700">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>Zapatillas Shimano SH-XC 700</h2>
+              <button id="boton-borrar-producto" class="eliminar-producto" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" value="1">
+              </label>
+              <p class="precio-producto-carrito">$20120</p>
+            </div>          
+          </div>
+        </article>
+      </div>
+
+      <p>Subtotal $172259</p>
+    </div>
+
+    <div class="contenedor-botones-carrito">
+      <button id="boton-comprar" class="boton-carrito comprar-prod"
+       aria-label="Comprar Productos">COMPRAR</button>
+      <button id="boton-vaciar" class="boton-carrito vaciar-prod"
+       aria-label="Vaciar Carrito">VACIAR</button>
+    </div>
+  </section>
+
+
+
 
   <script src="main.js"></script>
 </body>
