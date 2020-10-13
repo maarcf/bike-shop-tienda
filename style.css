@@ -481,12 +481,12 @@ input[type=text] {
   border: none;
   letter-spacing: 1.4px;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 .comprar-prod {
   color: #fff;
   background-color: #015D6F;
-  transition: all 0.5s;
 }
 
 .comprar-prod:hover {
@@ -496,7 +496,6 @@ input[type=text] {
 .vaciar-prod {
   background-color: #fff;
   border: 2px solid #B1110B;
-  transition: all 0.5s;
 }
 
 .vaciar-prod:hover {
@@ -504,12 +503,81 @@ input[type=text] {
   background-color: #B1110B;
 }
 
-
 .mostrar-carrito {
   transform: translate(0)
 }
+
+
+/* ======================================
+      Sección Confirmar Vaciar Carrito
+=========================================*/
+.vaciar-carrito-overlay {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-vaciar-carrito {
+  background-color: #fff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.popup-vaciar-carrito > p {
+  font-size: 35px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.contenedor-botones-vaciar-carrito {
+  margin-top: 40px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.boton-vaciar-carrito {
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 18px;
+  width: 200px;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.cancelar-accion {
+  background-color: #f5f5f5;
+}
+
+.cancelar-accion:hover {
+  background-color: #a9a9a9;
+}
+
+.vaciar-carrito {
+  background-color: #B1110B;
+  color: #fff;
+}
+
+.vaciar-carrito:hover {
+  background-color: #99100c;
+}
+
+
+
+
+
+
+
+
+
+
+
 .no-scroll {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .ocultar {

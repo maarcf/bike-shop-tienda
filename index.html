@@ -628,7 +628,7 @@
   <!-- Seccion Checkout Carrito -->
   <div class="overlay carrito-overlay ocultar"></div>
   <section class="carrito-checkout" aria-modal="true" role="dialog"
-   aria-label="Carrito de compras" aria-labelledby="carrito-compra">
+   aria-label="Carrito de compras" aria-labelledby="carrito-compra" aria-hidden="true">
     <div class="titular-carrito">
       <h2 id="carrito-compra">Carrito</h2>
       <button id="boton-cerrar-carrito" class="contenedor-icon" aria-label="Cerrar carrito">
@@ -694,7 +694,16 @@
 
   <!-- PopUp Vaciar Carrito -->
   <div class="overlay vaciar-carrito-overlay ocultar">
-
+    <div class="popup-vaciar-carrito" aria-modal="true" role="dialog"
+    aria-labelledby="popup-mensaje" aria-hidden="true">
+      <p id="popup-mensaje">Estás por vaciar el carrito, ¿quieres continuar?</p>
+      <div class="contenedor-botones-vaciar-carrito">
+        <button id="boton-cancelar-vaciar" class="boton-vaciar-carrito cancelar-accion"
+       aria-label="Cancelar vaciar carrito">CANCELAR</button>
+        <button id="boton-confirmar-vaciar" class="boton-vaciar-carrito vaciar-carrito"
+       aria-label="Vaciar Carrito">VACIAR</button>
+      </div>
+    </div>
   </div>
 
 

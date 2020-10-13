@@ -166,7 +166,12 @@ const mostrarCarrito = () => {
   overlayCarrito.classList.remove('ocultar');
   carritoCompras.classList.add('mostrar-carrito');
   document.body.classList.add('no-scroll');
+  setTimeout(focusBtn, 2100);
+  carritoCompras.setAttribute('aria-hidden', 'false');
 };
+
+// Poner el foco en el carrito
+const focusBtn = () => botonCerrarCarrito.focus();
 
 botonCerrarCarrito.onclick = () => {
   cerrarCarrito();
@@ -177,9 +182,45 @@ const cerrarCarrito = () => {
   overlayCarrito.classList.add('ocultar');
   carritoCompras.classList.remove('mostrar-carrito');
   document.body.classList.remove('no-scroll');
-}
+  carritoCompras.setAttribute('aria-hidden', 'true');
+};
 
 
 
 
 // Vaciar carrito
+const confirmarVaciarCarrito = document.getElementById('boton-vaciar');
+const overlayConfirmarVaciarCarrito = document.querySelector('.vaciar-carrito-overlay');
+const botonCancelarVaciar = document.getElementById('boton-cancelar-vaciar');
+const botonConfirmarVaciar = document.getElementById('boton-confirmar-vaciar');
+const popUpVaciarCarrito = document.querySelector('.popup-vaciar-carrito');
+
+// Cuando hace click en vaciarCarrito tiene que aparecer el overlay, cambiar en el contenedor el aria-hidden a false y
+// agregarle al body la clase no-scroll y hacer foco en algun boton
+
+const abrirPopUpVaciarCarrito = () => {
+  overlayConfirmarVaciarCarrito.classList.remove('ocultar');
+  document.body.classList.add('no-scroll');
+  popUpVaciarCarrito.setAttribute('aria-hidden', 'false');
+  botonCancelarVaciar.focus();
+}
+
+confirmarVaciarCarrito.onclick = () => {
+  abrirPopUpVaciarCarrito();
+}
+
+// si confirma o cancela tiene que volver a ocultarse overlay, cambiar en el contenedor el aria-hidden a true y
+// sacar el no-scroll a body
+const cerrarPopUpVaciarCarrito = () => {
+  overlayConfirmarVaciarCarrito.classList.add('ocultar');
+  document.body.classList.remove('no-scroll');
+  popUpVaciarCarrito.setAttribute('aria-hidden', 'true');
+};
+
+botonCancelarVaciar.onclick = () => {
+  cerrarPopUpVaciarCarrito();
+};
+
+botonConfirmarVaciar.onclick = () => {
+  cerrarPopUpVaciarCarrito();
+};
