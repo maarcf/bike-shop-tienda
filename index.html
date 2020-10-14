@@ -33,8 +33,9 @@
 
   <!-- Sección principal -->
   <section class="seccion-principal">
+    <div class="overlay filtro-overlay ocultar"></div>
     <aside class="contenedor-filtros-productos" aria-labelledby="formulario-filtro">
-      <div class="overlay filtro-overlay ocultar"></div>
+      
       <form id="formulario-filtro" class="formulario-filtro">
         <button id="boton-cerrar-filtros" class="contenedor-icon ocultar" aria-label="Cerrar filtros" type="button">
           <i class="fas fa-times" aria-hidden="true"></i>
@@ -160,7 +161,7 @@
           </button>
         </div>
 
-        <button id="boton-filtro" class="contenedor-icon filtro-media" aria-label="filtros">
+        <button id="boton-abrir-filtros" class="contenedor-icon filtro-media" aria-label="filtros">
           <i class="fas fa-filter" aria-hidden="true"></i>
           Filtros
         </button>
@@ -710,7 +711,7 @@
   </div>
 
   <!-- PopUp Finalizar Compra -->
-  <div class="overlay finalizar-compra-overlay oculta">
+  <div class="overlay finalizar-compra-overlay ocultar">
     <section class="popup-finalizar-compra" aria-modal="true" 
     role="dialog" aria-labelledby="formulario-compra">
       <form id="formulario-compra" class="formulario-compra">

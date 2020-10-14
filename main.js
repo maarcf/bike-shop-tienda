@@ -230,3 +230,54 @@ const ocultarOverlay = overlay => overlay.classList.add('ocultar');
 const bodyNoScroll = () => document.body.classList.add('no-scroll');
 const bodyScroll = () => document.body.classList.remove('no-scroll');
 const agregarFocus = (element) => element.focus();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Abrir y Cerrar Filtros en media
+const cerrarFiltros = document.getElementById('boton-cerrar-filtros');
+const seccionFiltros = document.querySelector('.contenedor-filtros-productos');
+const abrirFiltros = document.getElementById('boton-abrir-filtros');
+const overlayFiltros = document.querySelector('.filtro-overlay');
+
+console.log(cerrarFiltros, seccionFiltros, abrirFiltros, overlayFiltros)
+
+// al hacer click en el boton filtros tiene que aparecer el overlay, aparecer el filtro
+// y no poder hacer scroll
+const mostrarIconoCerrarFiltro = () => cerrarFiltros.classList.remove('ocultar');
+const aparecerFiltro = () => seccionFiltros.classList.add('mostrar-filtro');
+
+const mostrarFiltros = () => {
+  mostrarOverlay(overlayFiltros);
+  bodyNoScroll();
+  mostrarIconoCerrarFiltro();
+  aparecerFiltro();
+};
+
+abrirFiltros.onclick = () => mostrarFiltros();
+
+// al hacer click en el boton cerrar tiene que desaparecer el overlay, ocultarse el filtro 
+// y volver a hacer scroll el body
+
+const ocultarIconoCerrarFiltro = () => cerrarFiltros.classList.add('ocultar');
+const quitarFiltro = () => seccionFiltros.classList.remove('mostrar-filtro');
+
+const ocultarFiltros = () => {
+  ocultarOverlay(overlayFiltros);
+  bodyScroll();
+  ocultarIconoCerrarFiltro();
+  quitarFiltro();
+};
+
+cerrarFiltros.onclick = () => ocultarFiltros();

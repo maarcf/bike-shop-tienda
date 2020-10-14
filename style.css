@@ -92,6 +92,7 @@ body {
   flex-direction: column;
   flex: 1;
   padding: 0 30px;
+  transition: all 1s;
 }
 
 .formulario-filtro {
@@ -143,7 +144,7 @@ body {
   position: relative;
 }
 
-input[type=text] {
+.busqueda > label > input[type=text] {
   border: none;
   border-bottom: 2px solid #015D6F;
   background-color: #f5f5f5;
@@ -376,10 +377,6 @@ input[type=text] {
   bottom: 0;
 }
 
-.mostrar-carrito {
-  transform: translate(0)
-}
-
 .carrito-checkout {
   width: 350px;
   padding: 25px; 
@@ -509,10 +506,6 @@ input[type=text] {
   background-color: #B1110B;
 }
 
-.mostrar-carrito {
-  transform: translate(0)
-}
-
 
 /* ======================================
       Sección Confirmar Vaciar Carrito
@@ -615,11 +608,44 @@ input[type=text] {
 
 
 
-/*
-MEDIA 
-*/
+/* ================================
+            MEDIA QUERY 
+=================================== */
 
-@media (max-width: 900px) {
+
+@media (max-width: 940px) {
+  .contenedor-filtros-productos {
+    position: absolute;
+    background-color: #f5f5f5;
+    max-width: 80%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(300px);
+  }
+
+  .contenedor-titulo-aside {
+    padding: 0;
+  }
+
+  .contenedor-titulo-aside > h2 {
+    font-size: 18px;
+  }
+
+  .contenedor-titulo-aside > .contenedor-icon, 
+  .contenedor-titulo-aside > .contenedor-icon > .fas.fa-trash-alt {
+    font-size: 12px;
+  }
+
+  .titulos-filtros {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+
+  .busqueda > label > input[type=text], .checkbox {
+    font-size: 14px;
+  }
+
   .contenedor-botones-visualizacion-productos {
     display: none;
   }
@@ -628,3 +654,8 @@ MEDIA
   }
 }
 
+
+
+.mostrar-filtro, .mostrar-carrito {
+  transform: translate(0);
+}
