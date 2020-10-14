@@ -220,7 +220,7 @@ botonConfirmarVaciar.onclick = () => {
 };
 
 
-// Finalizar Compra
+// Proceder a realizar compra
 
 
 
@@ -269,7 +269,6 @@ abrirFiltros.onclick = () => mostrarFiltros();
 
 // al hacer click en el boton cerrar tiene que desaparecer el overlay, ocultarse el filtro 
 // y volver a hacer scroll el body
-
 const ocultarIconoCerrarFiltro = () => cerrarFiltros.classList.add('ocultar');
 const quitarFiltro = () => seccionFiltros.classList.remove('mostrar-filtro');
 
@@ -281,3 +280,124 @@ const ocultarFiltros = () => {
 };
 
 cerrarFiltros.onclick = () => ocultarFiltros();
+
+
+
+// Finalizar Compra
+
+const valorDescuento = document.querySelector('#valor-descuento');
+const valorEnvio = document.querySelector('#valor-envio');
+const valorRecargo = document.querySelector('#valor-recargo');
+
+const opcionEfectivo = document.getElementById('efectivo-debito');
+const opcionCredito = document.getElementById('tarjeta-credito');
+const opcionEnvio = document.getElementById('con-envio');
+const opcionDescuento = document.getElementById('con-descuento');
+
+const valorSubtotal = document.getElementById('subtotal-a-pagar');
+const parrafoDescuento = document.querySelector('.tiene-descuento');
+const parrafoEnvio = document.querySelector('.tiene-envio');
+const parrafoRecargo = document.querySelector('.tiene-recargo');
+const valorTotal = document.getElementById('total-a-pagar');
+// Valor a pagar
+const subtotal = 172259;
+
+
+const obtenerGastoEnvio = subtotal => subtotal + 300;
+
+const obtenerRecargo = subtotal => {
+  let recargo = subtotal * 0.1;
+  return  subtotal + recargo;
+};
+
+const obtenerDescuento = subtotal => {
+  let descuento = subtotal * 0.05;
+  return  subtotal - descuento;
+};
+
+// Obtener total: hay que revisar que seleccionó:
+// Si eligió envio se le suma el monto de envío.
+// Si tiene tarjeta de descuento tiene un 5% OFF.
+// Si abona con crédito hay que sumarle el 10% del valor.
+// Sumar todo al subtotal y mostrar el total a pagar.
+
+const obtenerTotal = subtotal => {
+  let descuento = 0;
+  let recargo = 0;
+  let gastosDeEnvio = 0;
+
+  if (opcionDescuento.checked) {
+    descuento = obtenerDescuento(subtotal) - subtotal;
+  };
+
+  if (opcionCredito.checked) {
+    recargo = obtenerRecargo(subtotal) - subtotal;
+  }
+  else {
+    parrafoRecargo.classList.add('ocultar');
+  };
+  ;
+  if (opcionEnvio.checked) {
+    gastosDeEnvio = obtenerGastoEnvio(subtotal) - subtotal;
+  };
+  return subtotal + descuento + recargo + gastosDeEnvio;
+};
+
+const mostarSubtotal = () => {
+  valorSubtotal.textContent = subtotal;
+};
+
+const mostrarTotal = () => {
+  valorTotal.textContent = obtenerTotal(subtotal);
+};
+
+const agregarDescuento = () => {
+  valorDescuento.textContent = subtotal - obtenerDescuento(subtotal);
+};
+
+const mostrarDescuento = () => {
+  parrafoDescuento.classList.toggle("ocultar");
+};
+
+const agregarRecargo = () => {
+  valorRecargo.textContent =  obtenerRecargo(subtotal) - subtotal;
+};
+
+const mostrarRecargo = () => {
+  parrafoRecargo.classList.remove("ocultar");
+};
+
+const agregarEnvio = () => {
+  valorEnvio.textContent = obtenerGastoEnvio(subtotal) - subtotal;
+};
+
+const mostrarEnvio = () => {
+  parrafoEnvio.classList.toggle("ocultar");
+};
+
+// Le muestro al usuario el subtotal y el valor total
+mostarSubtotal();
+mostrarTotal();
+
+opcionEfectivo.oninput = () => {
+  mostarSubtotal();
+  mostrarTotal();
+};
+
+opcionDescuento.oninput = () => {
+  agregarDescuento();
+  mostrarDescuento();
+  mostrarTotal();
+};
+
+opcionCredito.oninput = () => {
+  agregarRecargo();
+  mostrarRecargo();
+  mostrarTotal();
+};
+
+opcionEnvio.oninput = () => {
+  mostrarEnvio();
+  agregarEnvio();
+  mostrarTotal();
+};
