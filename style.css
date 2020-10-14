@@ -123,11 +123,10 @@ body {
   margin-right: 5px;
 }
 
-.contenedor-filtro {
+.contenedor-info-form {
   border: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -510,7 +509,7 @@ body {
 /* ======================================
       Sección Confirmar Vaciar Carrito
 =========================================*/
-.vaciar-carrito-overlay {
+.vaciar-carrito-overlay, .finalizar-compra-overlay {
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -566,6 +565,83 @@ body {
 }
 
 
+/* ======================================
+      Finalizar Compra
+=========================================*/
+.popup-finalizar-compra {
+  background-color: #fff;
+  padding: 20px;
+  position: absolute;
+}
+
+.contenedor-informacion-compra {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.informacion-compra {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+}
+
+.informacion-compra > h2 {
+  margin-bottom: 25px;
+  font-size: 25px;
+}
+
+.datos-personales {
+  border-bottom: 1px solid #a9a9a9;
+  padding-bottom: 25px;
+}
+
+.titulos-resumen-compra {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.datos-personales > label {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  font-weight: 300;
+}
+
+.inputs-compra {
+  padding: 8px;
+  margin-top: 10px;
+  border: none;
+  border-bottom: 1px solid #444444;
+  color: #a9a9a9;
+  letter-spacing: 0.3px;
+  width: 250px;
+}
+
+
+.formas-de-pago > label {
+  font-weight: 300;
+}
+
+.formas-de-pago > label > input {
+  margin: 0 8px 8px 0;
+}
+
+.total-a-pagar {
+  background-color: #f5f5f5;
+  padding: 20px 40px 0;
+}
+
+#resumen-de-pago {
+  display: flex;
+
+}
+
+
+
+
+
 
 
 
@@ -582,28 +658,6 @@ body {
 .ocultar {
   display: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -48,7 +48,7 @@
           </button>
         </div>
   
-        <fieldset class="contenedor-filtro busqueda">
+        <fieldset class="contenedor-info-form busqueda">
           <legend class="titulos-filtros">BÚSQUEDA</legend>
           <label for="busqueda-por-nombre">
             <input type="text" placeholder="Buscar productos" name="busqueda" id="busqueda-por-nombre"/>
@@ -58,7 +58,7 @@
           </label>
         </fieldset>
 
-        <fieldset class="contenedor-filtro categoria">
+        <fieldset class="contenedor-info-form categoria">
           <legend class="titulos-filtros">CATEGORIA</legend>
             <label class="checkbox" for="categoria">
               <input type="checkbox" name="categoria" id="categoria" value="bicicletas"/> 
@@ -82,7 +82,7 @@
             </label>
         </fieldset>
 
-        <fieldset class="contenedor-filtro puntuaje">
+        <fieldset class="contenedor-info-form puntuaje">
           <legend class="titulos-filtros">PUNTAJE</legend>
           <label class="checkbox" for="puntaje">
             <input type="checkbox" name="puntaje" id="puntaje" value="5"/>
@@ -711,7 +711,7 @@
   </div>
 
   <!-- PopUp Finalizar Compra -->
-  <div class="overlay finalizar-compra-overlay ocultar">
+  <div class="overlay finalizar-compra-overlay oculta">
     <section class="popup-finalizar-compra" aria-modal="true" 
     role="dialog" aria-labelledby="formulario-compra">
       <form id="formulario-compra" class="formulario-compra">
@@ -720,20 +720,20 @@
           <section class="informacion-compra" aria-labelledby="finalizar-compra">
             <h2 id="finalizar-compra">¡Ya casi es tuyo!</h2>
 
-            <fieldset class="contenedor-info-form">
+            <fieldset class="contenedor-info-form datos-personales">
               <legend class="titulos-resumen-compra">Datos personales</legend>
               <label for="nombre-comprador">
                 Nombre y appellido*
-                <input type="text" name="nombre" id="nombre-comprador" placeholder="p. ej.:Ada Lovelace" required />
+                <input class="inputs-compra" type="text" name="nombre" id="nombre-comprador" placeholder="p. ej.:Ada Lovelace" required />
               </label>
               <label for="email">
                 E-mail*
-                <input type="email" name="email" id="email" placeholder="p. ej.:ada.lovelace@gmail.com" required />
+                <input class="inputs-compra" type="email" name="email" id="email" placeholder="p. ej.:ada.lovelace@gmail.com" required />
               </label>
             </fieldset>
 
-            <fieldset class="contenedor-info-form">
-              <legend>Opciones de pago</legend>
+            <fieldset class="contenedor-info-form formas-de-pago">
+              <legend class="titulos-resumen-compra">Opciones de pago</legend>
               <label for="efectivo-debito">
                 <input type="radio" name="metodo-de-pago" id="efectivo-debito" value="efectivo-debito" checked />
                 Efectivo / Débito
@@ -754,8 +754,8 @@
           </section>
 
           <section class="total-a-pagar" aria-labelledby="resumen-de-pago">
-            <fieldset class="contenedor-info-form" id="resumen-de-pago">
-              <legend>Resumen</legend>
+            <fieldset class="contenedor-info-form resumen-de-pago" id="resumen-de-pago">
+              <legend class="titulos-resumen-compra">Resumen</legend>
               <div class="contenedor-info-a-pagar">
                 <p>Subtotal: <span id="subtotal-a-pagar">0</span> </p>
                 <p class="tiene-descuento ocultar">Descuento 5%: <span id="valor-descuento">0</span></p>
@@ -766,8 +766,8 @@
           </section>
         </div>
 
-        <div class="contenedor-informacion-compra">
-          <fieldset class="contenedor-info-form">
+        <div class="contenedor-botones-compra">
+          <fieldset class="botones-compra">
             <button id="boton-seguir-comprando" class="botones-modal cancelar-accion"
             type="button" aria-label="Seguir comprando">SEGUIR COMPRANDO</button>
             <button id="boton-finalizar-compra" class="botones-modal confirmar-compra"

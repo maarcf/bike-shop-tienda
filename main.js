@@ -300,7 +300,7 @@ const parrafoEnvio = document.querySelector('.tiene-envio');
 const parrafoRecargo = document.querySelector('.tiene-recargo');
 const valorTotal = document.getElementById('total-a-pagar');
 // Valor a pagar
-const subtotal = 172259;
+const subtotal = 172559;
 
 
 const obtenerGastoEnvio = subtotal => subtotal + 300;
@@ -344,15 +344,16 @@ const obtenerTotal = subtotal => {
 };
 
 const mostarSubtotal = () => {
-  valorSubtotal.textContent = subtotal;
+  valorSubtotal.textContent = subtotal.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
 };
 
 const mostrarTotal = () => {
-  valorTotal.textContent = obtenerTotal(subtotal);
+  valorTotal.textContent = obtenerTotal(subtotal).toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
 };
 
 const agregarDescuento = () => {
-  valorDescuento.textContent = subtotal - obtenerDescuento(subtotal);
+  precioDescuento = subtotal - obtenerDescuento(subtotal);
+  valorDescuento.textContent = precioDescuento.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
 };
 
 const mostrarDescuento = () => {
@@ -360,7 +361,8 @@ const mostrarDescuento = () => {
 };
 
 const agregarRecargo = () => {
-  valorRecargo.textContent =  obtenerRecargo(subtotal) - subtotal;
+  precioRecargo = obtenerRecargo(subtotal) - subtotal; 
+  valorRecargo.textContent = precioRecargo.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
 };
 
 const mostrarRecargo = () => {
