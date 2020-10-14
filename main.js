@@ -165,7 +165,6 @@ mostrarCarrito();
 const mostrarCarrito = () => {
   mostrarOverlay(overlayCarrito);
   bodyNoScroll();
-  quitarAriaHidden(carritoCompras);
   carritoCompras.classList.add('mostrar-carrito');
   //agrego el foco luego de esperar el tiempo de apertura del carrito
   setTimeout(focusBtn, 2100);
@@ -182,12 +181,9 @@ botonCerrarCarrito.onclick = () => {
 const cerrarCarrito = () => {
   ocultarOverlay(overlayCarrito);
   bodyScroll();
-  agregarAriaHidden(carritoCompras);
   carritoCompras.classList.remove('mostrar-carrito');
   agregarFocus(botonAbrirCarrito);
 };
-
-
 
 
 // Vaciar carrito
@@ -202,7 +198,6 @@ const popUpVaciarCarrito = document.querySelector('.popup-vaciar-carrito');
 
 const abrirPopUpVaciarCarrito = () => {
   mostrarOverlay(overlayConfirmarVaciarCarrito);
-  quitarAriaHidden(popUpVaciarCarrito);
   agregarFocus(botonCancelarVaciar);
 };
 
@@ -213,7 +208,6 @@ confirmarVaciarCarrito.onclick = () => {
 // si confirma o cancela tiene que volver a ocultarse overlay, cambiar en el contenedor el aria-hidden a true 
 const cerrarPopUpVaciarCarrito = () => {
   ocultarOverlay(overlayConfirmarVaciarCarrito);
-  agregarAriaHidden(popUpVaciarCarrito);
   agregarFocus(confirmarVaciarCarrito);
 };
 
@@ -225,11 +219,14 @@ botonConfirmarVaciar.onclick = () => {
   cerrarPopUpVaciarCarrito();
 };
 
+
+// Finalizar Compra
+
+
+
 // Funcionalidades comunes a los modales
 const mostrarOverlay = overlay => overlay.classList.remove('ocultar');
 const ocultarOverlay = overlay => overlay.classList.add('ocultar');
 const bodyNoScroll = () => document.body.classList.add('no-scroll');
 const bodyScroll = () => document.body.classList.remove('no-scroll');
-const quitarAriaHidden = elementoHTML => elementoHTML.setAttribute('aria-hidden', 'false');
-const agregarAriaHidden = elementoHTML => elementoHTML.setAttribute('aria-hidden', 'true');
 const agregarFocus = (element) => element.focus();

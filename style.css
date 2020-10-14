@@ -94,9 +94,15 @@ body {
   padding: 0 30px;
 }
 
-#formulario-filtro {
-  position: sticky;
-  top: 30px;
+.formulario-filtro {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  transition: all 1s;
+}
+
+.formulario-filtro > .contenedor-icon {
+  justify-content: flex-end;
 }
 
 .contenedor-titulo-aside {
