@@ -221,7 +221,34 @@ botonConfirmarVaciar.onclick = () => {
 
 
 // Proceder a realizar compra
+const botonRealizarCompra = document.getElementById('boton-comprar-carrito');
+const botonSeguirComprando = document.getElementById('boton-seguir-comprando');
+const botonFinalizarCompra = document.getElementById('boton-finalizar-compra');
+const overlayFinalizarCompra = document.querySelector('.finalizar-compra-overlay');
 
+// Cuando se hace click en comprar tiene que aparecer overlay, poner foco en seguir comprando
+const abrirFinalizarCompra = () => {
+  mostrarOverlay(overlayFinalizarCompra);
+  agregarFocus(botonSeguirComprando);
+};
+
+botonRealizarCompra.onclick = () => {
+  abrirFinalizarCompra();
+};
+
+// Cuando se hace click en finalizar o seguir comprando tiene que desaparecer overlay, poner foco comprar del carrito
+const cerrarFinalizarCompra = () => {
+  ocultarOverlay(overlayFinalizarCompra);
+  agregarFocus(botonRealizarCompra);
+};
+
+botonSeguirComprando.onclick = () => {
+  cerrarFinalizarCompra();
+};
+
+botonFinalizarCompra.onclick = e => {
+  e.preventDefault();
+}
 
 
 // Funcionalidades comunes a los modales
@@ -250,8 +277,6 @@ const cerrarFiltros = document.getElementById('boton-cerrar-filtros');
 const seccionFiltros = document.querySelector('.contenedor-filtros-productos');
 const abrirFiltros = document.getElementById('boton-abrir-filtros');
 const overlayFiltros = document.querySelector('.filtro-overlay');
-
-console.log(cerrarFiltros, seccionFiltros, abrirFiltros, overlayFiltros)
 
 // al hacer click en el boton filtros tiene que aparecer el overlay, aparecer el filtro
 // y no poder hacer scroll
@@ -344,16 +369,19 @@ const obtenerTotal = subtotal => {
 };
 
 const mostarSubtotal = () => {
-  valorSubtotal.textContent = subtotal.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  let preciosubtotal = subtotal.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  valorSubtotal.textContent = `$${preciosubtotal}`;
 };
 
 const mostrarTotal = () => {
-  valorTotal.textContent = obtenerTotal(subtotal).toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  let total = obtenerTotal(subtotal).toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  valorTotal.textContent = `$${total}`;
 };
 
 const agregarDescuento = () => {
-  precioDescuento = subtotal - obtenerDescuento(subtotal);
-  valorDescuento.textContent = precioDescuento.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  let precioDescuento = subtotal - obtenerDescuento(subtotal);
+  precioDescuento = precioDescuento.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  valorDescuento.textContent = `$${precioDescuento}`;
 };
 
 const mostrarDescuento = () => {
@@ -361,8 +389,9 @@ const mostrarDescuento = () => {
 };
 
 const agregarRecargo = () => {
-  precioRecargo = obtenerRecargo(subtotal) - subtotal; 
-  valorRecargo.textContent = precioRecargo.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  let precioRecargo = obtenerRecargo(subtotal) - subtotal;
+  precioRecargo = precioRecargo.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  valorRecargo.textContent = `$${precioRecargo}`;
 };
 
 const mostrarRecargo = () => {
@@ -370,7 +399,7 @@ const mostrarRecargo = () => {
 };
 
 const agregarEnvio = () => {
-  valorEnvio.textContent = obtenerGastoEnvio(subtotal) - subtotal;
+  valorEnvio.textContent = `$${obtenerGastoEnvio(subtotal) - subtotal}`;
 };
 
 const mostrarEnvio = () => {

@@ -690,9 +690,9 @@
     </div>
 
     <div class="contenedor-botones-carrito">
-      <button id="boton-comprar" class="boton-carrito comprar-prod"
+      <button id="boton-comprar-carrito" class="botones-carrito comprar-prod"
        aria-label="Comprar Productos">COMPRAR</button>
-      <button id="boton-vaciar" class="boton-carrito vaciar-prod"
+      <button id="boton-vaciar" class="botones-carrito vaciar-prod"
        aria-label="Vaciar Carrito">VACIAR</button>
     </div>
   </section>
@@ -702,79 +702,72 @@
     <div class="popup-vaciar-carrito" aria-modal="true" role="dialog" aria-labelledby="popup-mensaje">
       <p id="popup-mensaje">Estás por vaciar el carrito, ¿quieres continuar?</p>
       <div class="contenedor-botones-vaciar-carrito">
-        <button id="boton-cancelar-vaciar" class="boton-vaciar-carrito cancelar-accion"
+        <button id="boton-cancelar-vaciar" class="botones-modal cancelar-accion"
        aria-label="Cancelar vaciar carrito">CANCELAR</button>
-        <button id="boton-confirmar-vaciar" class="boton-vaciar-carrito vaciar-carrito"
+        <button id="boton-confirmar-vaciar" class="botones-modal vaciar-carrito"
        aria-label="Vaciar Carrito">VACIAR</button>
       </div>
     </div>
   </div>
 
   <!-- PopUp Finalizar Compra -->
-  <div class="overlay finalizar-compra-overlay oculta">
+  <div class="overlay finalizar-compra-overlay ocultar">
     <section class="popup-finalizar-compra" aria-modal="true" 
-    role="dialog" aria-labelledby="formulario-compra">
-      <form id="formulario-compra" class="formulario-compra">
-
-        <div class="contenedor-informacion-compra">
-          <section class="informacion-compra" aria-labelledby="finalizar-compra">
-            <h2 id="finalizar-compra">¡Ya casi es tuyo!</h2>
-
-            <fieldset class="contenedor-info-form datos-personales">
-              <legend class="titulos-resumen-compra">Datos personales</legend>
-              <label for="nombre-comprador">
-                Nombre y appellido*
-                <input class="inputs-compra" type="text" name="nombre" id="nombre-comprador" placeholder="p. ej.:Ada Lovelace" required />
-              </label>
-              <label for="email">
-                E-mail*
-                <input class="inputs-compra" type="email" name="email" id="email" placeholder="p. ej.:ada.lovelace@gmail.com" required />
-              </label>
-            </fieldset>
-
-            <fieldset class="contenedor-info-form formas-de-pago">
-              <legend class="titulos-resumen-compra">Opciones de pago</legend>
-              <label for="efectivo-debito">
-                <input type="radio" name="metodo-de-pago" id="efectivo-debito" value="efectivo-debito" checked />
-                Efectivo / Débito
-              </label>
-              <label for="tarjeta-credito">
-                <input type="radio" name="metodo-de-pago" id="tarjeta-credito" value="tarjeta-credito" />
-                Tarjeta de crédito
-              </label>
-              <label for="con-envio">
-                <input type="checkbox" name="con-envio" id="con-envio" />
-                Necesito envío
-              </label>
-              <label for="con-descuento">
-                <input type="checkbox" name="con-descuento" id="con-descuento" />
-                Tengo tarjeta de descuento
-              </label>
-            </fieldset>
-          </section>
-
-          <section class="total-a-pagar" aria-labelledby="resumen-de-pago">
-            <fieldset class="contenedor-info-form resumen-de-pago" id="resumen-de-pago">
-              <legend class="titulos-resumen-compra">Resumen</legend>
-              <div class="contenedor-info-a-pagar">
-                <p>Subtotal: <span id="subtotal-a-pagar">0</span> </p>
-                <p class="tiene-descuento ocultar">Descuento 5%: <span id="valor-descuento">0</span></p>
-                <p class="tiene-envio ocultar">Envío: <span id="valor-envio">0</span></p>
-                <p class="tiene-recargo ocultar">Recargo: <span id="valor-recargo">0</span></p>
-                <h4>Total: <span aria-live="polite" id="total-a-pagar">0</span></h4>
-              </div>
-          </section>
-        </div>
-
-        <div class="contenedor-botones-compra">
-          <fieldset class="botones-compra">
-            <button id="boton-seguir-comprando" class="botones-modal cancelar-accion"
-            type="button" aria-label="Seguir comprando">SEGUIR COMPRANDO</button>
-            <button id="boton-finalizar-compra" class="botones-modal confirmar-compra"
-            aria-label="Finalizar compra">FINALIZAR</button>
+    role="dialog" aria-labelledby="finalizar-compra">
+      <h2 id="finalizar-compra">¡Ya casi es tuyo!</h2>
+      <div class="contenedor-informacion-compra">
+        <form id="formulario-compra" class="formulario-compra">
+          <fieldset class="contenedor-info-form datos-personales">
+            <legend class="titulos-resumen-compra">Datos personales</legend>
+            <label for="nombre-comprador">
+              Nombre y appellido*
+              <input class="inputs-compra" type="text" name="nombre" id="nombre-comprador" placeholder="p. ej.:Ada Lovelace" required />
+            </label>
+            <label for="email">
+              E-mail*
+              <input class="inputs-compra" type="email" name="email" id="email" placeholder="p. ej.:ada.lovelace@gmail.com" required />
+            </label>
           </fieldset>
-        </div>      
-      </form>
+
+          <fieldset class="contenedor-info-form formas-de-pago">
+            <legend class="titulos-resumen-compra">Opciones de pago</legend>
+            <label for="efectivo-debito">
+              <input type="radio" name="metodo-de-pago" id="efectivo-debito" value="efectivo-debito" checked />
+              Efectivo / Débito
+            </label>
+            <label for="tarjeta-credito">
+              <input type="radio" name="metodo-de-pago" id="tarjeta-credito" value="tarjeta-credito" />
+              Tarjeta de crédito
+            </label>
+            <label for="con-envio">
+              <input type="checkbox" name="con-envio" id="con-envio" />
+              Necesito envío
+            </label>
+            <label for="con-descuento">
+              <input type="checkbox" name="con-descuento" id="con-descuento" />
+              Tengo tarjeta de descuento
+            </label>
+          </fieldset>
+        </form>
+
+        <section class="total-a-pagar" aria-labelledby="resumen-de-pago">
+          <h3 id="resumen-de-pago" class="titulos-resumen-compra">Resumen</h3>
+          <div class="contenedor-info-a-pagar">
+            <p class="mensaje-pagar">Subtotal: <span id="subtotal-a-pagar">0</span> </p>
+            <p class="mensaje-pagar tiene-descuento ocultar">Descuento 5%: <span id="valor-descuento">0</span></p>
+            <p class="mensaje-pagar tiene-envio ocultar">Envío: <span id="valor-envio">0</span></p>
+            <p class="mensaje-pagar tiene-recargo ocultar">Recargo: <span id="valor-recargo">0</span></p>
+            <h4>Total: <span aria-live="polite" id="total-a-pagar">0</span></h4>
+          </div>
+        </section>
+      </div>
+
+      <div class="botones-compra">
+        <button id="boton-seguir-comprando" class="botones-modal cancelar-accion"
+        aria-label="Seguir comprando">SEGUIR COMPRANDO</button>
+        <button id="boton-finalizar-compra" class="botones-modal comprar-prod"
+        aria-label="Finalizar compra">FINALIZAR</button>
+      </div>
     </section>
   </div>
 
