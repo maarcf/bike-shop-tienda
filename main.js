@@ -246,9 +246,6 @@ botonSeguirComprando.onclick = () => {
   cerrarFinalizarCompra();
 };
 
-botonFinalizarCompra.onclick = e => {
-  e.preventDefault();
-}
 
 
 // Funcionalidades comunes a los modales

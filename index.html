@@ -716,7 +716,7 @@
     role="dialog" aria-labelledby="finalizar-compra">
       <h2 id="finalizar-compra">¡Ya casi es tuyo!</h2>
       <div class="contenedor-informacion-compra">
-        <form id="formulario-compra" class="formulario-compra">
+        <form method="GET" id="formulario-compra" class="formulario-compra">
           <fieldset class="contenedor-info-form datos-personales">
             <legend class="titulos-resumen-compra">Datos personales</legend>
             <label for="nombre-comprador">
@@ -765,8 +765,9 @@
       <div class="botones-compra">
         <button id="boton-seguir-comprando" class="botones-modal cancelar-accion"
         aria-label="Seguir comprando">SEGUIR COMPRANDO</button>
+        
         <button id="boton-finalizar-compra" class="botones-modal comprar-prod"
-        aria-label="Finalizar compra">FINALIZAR</button>
+        aria-label="Finalizar compra" type="submit" form="formulario-compra">FINALIZAR</button>
       </div>
     </section>
   </div>
