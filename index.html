@@ -82,7 +82,7 @@
             </label>
         </fieldset>
 
-        <fieldset class="contenedor-info-form puntuaje">
+        <fieldset class="contenedor-info-form puntaje">
           <legend class="titulos-filtros">PUNTAJE</legend>
           <label class="checkbox" for="puntaje">
             <input type="checkbox" name="puntaje" id="puntaje" value="5"/>
@@ -721,11 +721,13 @@
             <legend class="titulos-resumen-compra">Datos personales</legend>
             <label for="nombre-comprador">
               Nombre y appellido*
-              <input class="inputs-compra" type="text" name="nombre" id="nombre-comprador" placeholder="p. ej.:Ada Lovelace" required />
+              <input class="inputs-compra" type="text" name="nombre" aria-label="Nombre y Apellido. Requerido"
+              id="nombre-comprador" placeholder="p. ej.:Ada Lovelace" required />
             </label>
             <label for="email">
               E-mail*
-              <input class="inputs-compra" type="email" name="email" id="email" placeholder="p. ej.:ada.lovelace@gmail.com" required />
+              <input class="inputs-compra" type="email" name="email" aria-label="Correo electrónico. Requerido"
+              id="email" placeholder="p. ej.:ada.lovelace@gmail.com" required />
             </label>
           </fieldset>
 

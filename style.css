@@ -10,7 +10,7 @@
 body {
   background-color: #f5f5f5;
   font-family: 'Lato', sans-serif;
-  overflow-x: hidden;
+ overflow-x: hidden;
 }
 
 /* =====================
@@ -373,7 +373,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,.6);
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
 }
@@ -384,7 +384,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -680,7 +680,6 @@ body {
 
 
 
-
 .no-scroll {
   overflow-y: hidden;
 }
@@ -696,10 +695,14 @@ body {
             MEDIA QUERY 
 =================================== */
 
+@media (min-width: 941px) {
+  
+}
 
 @media (max-width: 940px) {
   .contenedor-filtros-productos {
-    position: absolute;
+    /*position: absolute;*/
+    position: fixed;
     background-color: #f5f5f5;
     max-width: 80%;
     top: 0;

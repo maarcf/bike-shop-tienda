@@ -280,28 +280,28 @@ const overlayFiltros = document.querySelector('.filtro-overlay');
 const mostrarIconoCerrarFiltro = () => cerrarFiltros.classList.remove('ocultar');
 const aparecerFiltro = () => seccionFiltros.classList.add('mostrar-filtro');
 
-const mostrarFiltros = () => {
+const mostrarFiltrosEnMedia = () => {
   mostrarOverlay(overlayFiltros);
   bodyNoScroll();
   mostrarIconoCerrarFiltro();
   aparecerFiltro();
 };
 
-abrirFiltros.onclick = () => mostrarFiltros();
+abrirFiltros.onclick = () => mostrarFiltrosEnMedia();
 
 // al hacer click en el boton cerrar tiene que desaparecer el overlay, ocultarse el filtro 
 // y volver a hacer scroll el body
 const ocultarIconoCerrarFiltro = () => cerrarFiltros.classList.add('ocultar');
 const quitarFiltro = () => seccionFiltros.classList.remove('mostrar-filtro');
 
-const ocultarFiltros = () => {
+const ocultarFiltrosEnMedia = () => {
   ocultarOverlay(overlayFiltros);
   bodyScroll();
   ocultarIconoCerrarFiltro();
   quitarFiltro();
 };
 
-cerrarFiltros.onclick = () => ocultarFiltros();
+cerrarFiltros.onclick = () => ocultarFiltrosEnMedia();
 
 
 
@@ -378,7 +378,7 @@ const mostrarTotal = () => {
 const agregarDescuento = () => {
   let precioDescuento = subtotal - obtenerDescuento(subtotal);
   precioDescuento = precioDescuento.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
-  valorDescuento.textContent = `$${precioDescuento}`;
+  valorDescuento.textContent = `-$${precioDescuento}`;
 };
 
 const mostrarDescuento = () => {
@@ -429,3 +429,15 @@ opcionEnvio.oninput = () => {
   agregarEnvio();
   mostrarTotal();
 };
+
+
+
+
+
+
+
+// Funciones Filtros
+const filtroBusqueda = document.querySelector('#busqueda-por-nombre');
+const filtroCategorias = document.querySelectorAll('.categoria > .checkbox > input[type="checkbox"]');
+const filtroPuntajes = document.querySelectorAll('.puntaje > .checkbox > input[type="checkbox"]');
+// todosLosProductos ---> tarjetas de los productos declarada más arriba
