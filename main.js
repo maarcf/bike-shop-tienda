@@ -431,7 +431,6 @@ pasaFiltros = producto => {
   if (filtroBusquedaEscrita(producto) && 
   filtroCheckboxCategoria(producto) && 
   filtroCheckboxPuntaje(producto)) {
-    contadorProductosVisibles(); // revisar que está fallando 
     return true;
   }
   else {
@@ -569,17 +568,20 @@ const filtrarProductos = () => {
 
 filtroBusqueda.oninput = () => {
   filtrarProductos();
+  contadorProductosVisibles();
 };
 
 for (let checkbox of filtroCategorias) {
   checkbox.oninput = () => {
     filtrarProductos();
+    contadorProductosVisibles();
   };
 };
 
 for (let checkbox of filtroPuntajes) {
   checkbox.oninput = () => {
     filtrarProductos();
+    contadorProductosVisibles();
   };
 };
 
