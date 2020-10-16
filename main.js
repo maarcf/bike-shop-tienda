@@ -582,3 +582,26 @@ for (let checkbox of filtroPuntajes) {
     filtrarProductos();
   };
 };
+
+
+
+//Borrar filtros
+const botonLimpiarFiltro = document.getElementById('boton-limpiar-filtros');
+
+const limpiarFiltroBusqueda = () => filtroBusqueda.value = "";
+
+const quitarCheckboxsSeleccionados = filtro => {
+  for (let checkbox of filtro) {
+    checkbox.checked = false;
+  };
+};
+
+botonLimpiarFiltro.onclick = () => {
+  limpiarFiltroBusqueda();
+  quitarCheckboxsSeleccionados(filtroCategorias);
+  quitarCheckboxsSeleccionados(filtroPuntajes);
+  for (let producto of todosLosProductos) {
+    mostrarProducto(producto);
+  };
+  contadorProductosVisibles();
+};
