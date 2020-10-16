@@ -257,18 +257,6 @@ const agregarFocus = (element) => element.focus();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // Abrir y Cerrar Filtros en media
 const cerrarFiltros = document.getElementById('boton-cerrar-filtros');
 const seccionFiltros = document.querySelector('.contenedor-filtros-productos');
@@ -432,12 +420,165 @@ opcionEnvio.oninput = () => {
 
 
 
-
-
-
-
 // Funciones Filtros
 const filtroBusqueda = document.querySelector('#busqueda-por-nombre');
 const filtroCategorias = document.querySelectorAll('.categoria > .checkbox > input[type="checkbox"]');
 const filtroPuntajes = document.querySelectorAll('.puntaje > .checkbox > input[type="checkbox"]');
 // todosLosProductos ---> tarjetas de los productos declarada más arriba
+
+// Función que permite chequear todos los filtros a la vez
+pasaFiltros = producto => {
+  if (filtroBusquedaEscrita(producto) && 
+  filtroCheckboxCategoria(producto) && 
+  filtroCheckboxPuntaje(producto)) {
+    contadorProductosVisibles(); // revisar que está fallando 
+    return true;
+  }
+  else {
+    return false;
+  };
+};
+
+// Filtro para buscar por nombre
+const compararInputConProductos = producto => {
+  // reviso que lo escrito en el input sea igual a algun data nombre de los productos
+  if (producto.dataset.nombre.includes(filtroBusqueda.value.toLowerCase())) {
+    return true;
+  }
+  else {
+    return false;
+  };
+};
+
+const hayAlgoEscritoEnElInput = () => Boolean(filtroBusqueda.value);
+
+const filtroBusquedaEscrita = producto => {
+  // reviso si en el input text hay algo
+  if (hayAlgoEscritoEnElInput()) {
+    // si hay algo me fijo si eso es igual a alguno de los productos
+    if (compararInputConProductos(producto)) {
+      return true;
+    }
+    else {
+      return false;
+    };
+  }
+  else {
+    return true;
+  };
+};
+
+// Filtro para buscar por categoría
+const compararCategoriaConProducto = producto => {
+  // recorro los checkbox y me fijo si alguno está chequeado
+  for (let checkbox of filtroCategorias) {
+    if (checkbox.checked) {
+      // si está chequeado reviso si el valor de ese checkbox coincide con el data de categoria
+      if (checkbox.value === producto.dataset.categoria) {
+        return true;
+      };
+    };
+  };
+  return false;
+};
+
+const hayCheckBoxChequeadoDeCategoria = () => {
+  // recorro los checkbox y me fijo si alguno está chequeado o no
+  for (let checkbox of filtroCategorias) {
+    if (checkbox.checked) {
+      return true;
+    };
+  };
+  return false;
+};
+
+const filtroCheckboxCategoria = producto => {
+  // me fijo si hay algun checkbox seleccionado
+  if (hayCheckBoxChequeadoDeCategoria()) {
+    //si algo está chequeado reviso si coincide con algún producto
+    if (compararCategoriaConProducto(producto)) {
+      return true;
+    }
+    else {
+      return false;
+    };
+  }
+  else {
+    return true;
+  };
+};
+
+// Filtro para buscar por puntaje
+const compararPuntajeConProducto = producto => {
+  // recorro los checkbox y me fijo si alguno está chequeado
+  for (let checkbox of filtroPuntajes) {
+    if (checkbox.checked) {
+      // si está chequeado reviso si el valor de ese checkbox coincide con el data de puntaje
+      if (checkbox.value === producto.dataset.puntaje) {
+        return true;
+      };
+    };
+  };
+  return false;
+};
+
+const hayCheckBoxChequeadoDePuntaje = () => {
+  // recorro los checkbox y me fijo si alguno está chequeado o no
+  for (let checkbox of filtroPuntajes) {
+    if (checkbox.checked) {
+      return true;
+    };
+  };
+  return false;
+};
+
+const filtroCheckboxPuntaje = producto => {
+  // me fijo si hay algun checkbox seleccionado
+  if (hayCheckBoxChequeadoDePuntaje()) {
+    //si algo está chequeado reviso si coincide con algún producto
+    if (compararPuntajeConProducto(producto)) {
+      return true;
+    }
+    else {
+      return false;
+    };
+  }
+  else {
+    return true;
+  };
+};
+
+
+// Revisar si los podrocutos pasan los filtros para luego Mostrar u Ocultar los mismos 
+const ocultarProducto = producto => producto.classList.add('ocultar');
+const mostrarProducto = producto => producto.classList.remove('ocultar');
+
+const filtrarProductos = () => {
+  // recorro los productos
+  for (let producto of todosLosProductos) {
+    if (pasaFiltros(producto)) {      
+      // si pasan los filtros los muestro
+      mostrarProducto(producto);
+    }
+    else {
+      // oculto esos productos que no pasan
+      ocultarProducto(producto);
+    };
+  };
+};
+
+filtroBusqueda.oninput = () => {
+  filtrarProductos();
+};
+
+for (let checkbox of filtroCategorias) {
+  checkbox.oninput = () => {
+    filtrarProductos();
+  };
+};
+
+for (let checkbox of filtroPuntajes) {
+  checkbox.oninput = () => {
+    filtrarProductos();
+  };
+};
