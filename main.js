@@ -168,6 +168,7 @@ const mostrarCarrito = () => {
   carritoCompras.classList.add('mostrar-carrito');
   //agrego el foco luego de esperar el tiempo de apertura del carrito
   setTimeout(focusBtn, 2100);
+  quitarTabControlAlAbrirCarrito();
 };
 
 // Poner el foco en el carrito
@@ -183,6 +184,7 @@ const cerrarCarrito = () => {
   bodyScroll();
   carritoCompras.classList.remove('mostrar-carrito');
   agregarFocus(botonAbrirCarrito);
+  agregarTabControlAlCerrarCarrito();
 };
 
 
@@ -199,6 +201,7 @@ const popUpVaciarCarrito = document.querySelector('.popup-vaciar-carrito');
 const abrirPopUpVaciarCarrito = () => {
   mostrarOverlay(overlayConfirmarVaciarCarrito);
   agregarFocus(botonCancelarVaciar);
+  quitarTabDelCarrito();
 };
 
 confirmarVaciarCarrito.onclick = () => {
@@ -209,6 +212,7 @@ confirmarVaciarCarrito.onclick = () => {
 const cerrarPopUpVaciarCarrito = () => {
   ocultarOverlay(overlayConfirmarVaciarCarrito);
   agregarFocus(confirmarVaciarCarrito);
+  agregarTabDelCarrito();
 };
 
 botonCancelarVaciar.onclick = () => {
@@ -230,6 +234,7 @@ const overlayFinalizarCompra = document.querySelector('.finalizar-compra-overlay
 const abrirFinalizarCompra = () => {
   mostrarOverlay(overlayFinalizarCompra);
   agregarFocus(botonSeguirComprando);
+  quitarTabDelCarrito();
 };
 
 botonRealizarCompra.onclick = () => {
@@ -240,6 +245,7 @@ botonRealizarCompra.onclick = () => {
 const cerrarFinalizarCompra = () => {
   ocultarOverlay(overlayFinalizarCompra);
   agregarFocus(botonRealizarCompra);
+  agregarTabDelCarrito();
 };
 
 botonSeguirComprando.onclick = () => {
@@ -273,6 +279,7 @@ const mostrarFiltrosEnMedia = () => {
   bodyNoScroll();
   mostrarIconoCerrarFiltro();
   aparecerFiltro();
+  quitarTabControlAlAbrirFiltro();
 };
 
 abrirFiltros.onclick = () => mostrarFiltrosEnMedia();
@@ -287,6 +294,7 @@ const ocultarFiltrosEnMedia = () => {
   bodyScroll();
   ocultarIconoCerrarFiltro();
   quitarFiltro();
+  agregarTabControlAlCerrarFiltro();
 };
 
 cerrarFiltros.onclick = () => ocultarFiltrosEnMedia();
@@ -548,7 +556,7 @@ const filtroCheckboxPuntaje = producto => {
 };
 
 
-// Revisar si los podrocutos pasan los filtros para luego Mostrar u Ocultar los mismos 
+// Revisar si los productos pasan los filtros para luego Mostrar u Ocultar los mismos 
 const ocultarProducto = producto => producto.classList.add('ocultar');
 const mostrarProducto = producto => producto.classList.remove('ocultar');
 
@@ -587,7 +595,7 @@ for (let checkbox of filtroPuntajes) {
 
 
 
-//Borrar filtros
+// Borrar filtros
 const botonLimpiarFiltro = document.getElementById('boton-limpiar-filtros');
 
 const limpiarFiltroBusqueda = () => filtroBusqueda.value = "";
@@ -606,4 +614,105 @@ botonLimpiarFiltro.onclick = () => {
     mostrarProducto(producto);
   };
   contadorProductosVisibles();
+};
+
+
+
+// Accesibilidad avanzada
+// Cuando aparecen los modales no se puede navegar con el Tab lo que está fuera de los modales.
+
+const quitarTabControlDeLista = lista => {
+  // recorro una lista de elementos que pueden tener foco
+  for (let elemento of lista) {
+    // le agrego a esos elementos el atributo para que cuando el modal este no sean focusable con tab
+    elemento.setAttribute('tabindex', '-1');
+  };
+};
+
+// Le agrego el atributo al elemento para que cuando este el modal no pueda ser focusable.
+const quitarTabControlDeElemento = elemento => elemento.setAttribute('tabindex', '-1');
+
+// Modal del Carrito
+const botonesComprarProducto = document.querySelectorAll('.comprar-producto');
+// botonLimpiarFiltro
+// filtroBusqueda
+// filtroCategorias
+// filtroPuntajes
+// botonAbrirCarrito
+
+const quitarTabControlAlAbrirCarrito = () => {
+  quitarTabControlDeLista(filtroCategorias);
+  quitarTabControlDeLista(filtroPuntajes);
+  quitarTabControlDeLista(botonesComprarProducto);
+  quitarTabControlDeElemento(botonLimpiarFiltro);
+  quitarTabControlDeElemento(filtroBusqueda);
+  quitarTabControlDeElemento(botonAbrirCarrito);
+  quitarTabControlDeElemento(botonGrilla);
+  quitarTabControlDeElemento(botonGrilla);
+};
+
+
+// Sacar el tabControl Del Carrito cuando se abre el segundo modal
+const botonesEliminarProducto = document.querySelectorAll('.eliminar-producto');
+const unidadesDeProductos = document.querySelectorAll('.cantidad-y-precio-producto > .unidades-a-llevar > input[type="number"]');
+// botonCerrarCarrito
+// botonRealizarCompra
+// confirmarVaciarCarrito
+
+const quitarTabDelCarrito = () => {
+  quitarTabControlDeLista(botonesEliminarProducto);
+  quitarTabControlDeLista(unidadesDeProductos);
+  quitarTabControlDeElemento(botonCerrarCarrito);
+  quitarTabControlDeElemento(botonRealizarCompra);
+  quitarTabControlDeElemento(confirmarVaciarCarrito);
+};
+
+// Modal Filtro
+const quitarTabControlAlAbrirFiltro = () => {
+  quitarTabControlDeLista(botonesComprarProducto);
+  quitarTabControlDeElemento(botonAbrirCarrito);
+  quitarTabControlDeElemento(botonGrilla);
+  quitarTabControlDeElemento(botonGrilla)
+};
+
+
+// Al cerrar los modales volver a incorporar el tabControl
+const agregarTabControlDeLista = lista => {
+  // recorro la lista de elementos que pueden tener foco
+  for (let elemento of lista) {
+    // le agrego a esos elementos el atributo para que puedan ser focusable nuevamente.
+    elemento.setAttribute('tabindex', '0');
+  };
+};
+
+// Vuelvo a modificar el atributro de los elementos a 0 para que pueda volver a tener foco
+const agregarTabControlDeElemento = elemento => elemento.setAttribute('tabindex', '0');
+
+// Al cerrar carrito
+const agregarTabControlAlCerrarCarrito = () => {
+  agregarTabControlDeLista(filtroCategorias);
+  agregarTabControlDeLista(filtroPuntajes);
+  agregarTabControlDeLista(botonesComprarProducto);
+  agregarTabControlDeElemento(botonLimpiarFiltro);
+  agregarTabControlDeElemento(filtroBusqueda);
+  agregarTabControlDeElemento(botonAbrirCarrito);
+  agregarTabControlDeElemento(botonGrilla);
+  agregarTabControlDeElemento(botonGrilla);
+};
+
+// Al cerrar los segundo modales, volver devolver el foco al carrito
+const agregarTabDelCarrito = () => {
+  agregarTabControlDeLista(botonesEliminarProducto);
+  agregarTabControlDeLista(unidadesDeProductos);
+  agregarTabControlDeElemento(botonCerrarCarrito);
+  agregarTabControlDeElemento(botonRealizarCompra);
+  agregarTabControlDeElemento(confirmarVaciarCarrito);
+};
+
+// Agregar Tab al cerrar el modal del Filtro
+const agregarTabControlAlCerrarFiltro = () => {
+  agregarTabControlDeLista(botonesComprarProducto);
+  agregarTabControlDeElemento(botonAbrirCarrito);
+  agregarTabControlDeElemento(botonGrilla);
+  agregarTabControlDeElemento(botonGrilla)
 };
