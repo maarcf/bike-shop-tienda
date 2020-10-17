@@ -259,7 +259,7 @@ const mostrarOverlay = overlay => overlay.classList.remove('ocultar');
 const ocultarOverlay = overlay => overlay.classList.add('ocultar');
 const bodyNoScroll = () => document.body.classList.add('no-scroll');
 const bodyScroll = () => document.body.classList.remove('no-scroll');
-const agregarFocus = (element) => element.focus();
+const agregarFocus = elemento => elemento.focus();
 
 
 
