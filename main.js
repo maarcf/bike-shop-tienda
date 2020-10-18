@@ -195,8 +195,7 @@ const botonCancelarVaciar = document.getElementById('boton-cancelar-vaciar');
 const botonConfirmarVaciar = document.getElementById('boton-confirmar-vaciar');
 const popUpVaciarCarrito = document.querySelector('.popup-vaciar-carrito');
 
-// Cuando hace click en vaciarCarrito tiene que aparecer el overlay, cambiar en el contenedor el aria-hidden a false y
-// hacer foco en algun boton
+// Cuando hace click en vaciarCarrito tiene que aparecer el overlay, quitar el tabControl del carrito y hacer foco en algun boton
 
 const abrirPopUpVaciarCarrito = () => {
   mostrarOverlay(overlayConfirmarVaciarCarrito);
@@ -208,7 +207,7 @@ confirmarVaciarCarrito.onclick = () => {
   abrirPopUpVaciarCarrito();
 };
 
-// si confirma o cancela tiene que volver a ocultarse overlay, cambiar en el contenedor el aria-hidden a true 
+// si confirma tiene que volver a ocultarse overlay, volver a agregar el tabControl del carrito y cambiar el foco 
 const cerrarPopUpVaciarCarrito = () => {
   ocultarOverlay(overlayConfirmarVaciarCarrito);
   agregarFocus(confirmarVaciarCarrito);
@@ -219,9 +218,64 @@ botonCancelarVaciar.onclick = () => {
   cerrarPopUpVaciarCarrito();
 };
 
+// si cancela tiene que volver a ocultarse overlay, volver a agregar el tabControl del carrito, cambiar el foco,
+// mostrar info sin productos en el carrito y ocultar contenedores de producto y botones 
+const realizarVaciarCarrito = () => {
+  ocultarOverlay(overlayConfirmarVaciarCarrito);
+  agregarFocus(confirmarVaciarCarrito);
+  agregarTabDelCarrito();
+  mostrarCarritoSinProductos();
+  ocultarCarritoConProductos();
+  ocultarBotonesCarrito();
+}
+
 botonConfirmarVaciar.onclick = () => {
-  cerrarPopUpVaciarCarrito();
+  realizarVaciarCarrito();
 };
+
+
+// Carrito Funcionalidades avanzadas
+const contadoresDeProductosEnCarrito = document.querySelectorAll('.carrito-cantidad-productos');
+const contenedorProductosEnCarrito = document.querySelector('.detalle-productos-en-carrito');
+const carritoSinProductos = document.querySelector('.carrito-sin-productos');
+const botonesCarrito = document.querySelector('.contenedor-botones-carrito');
+const botonesComprarProducto = document.querySelectorAll('.comprar-producto');
+
+// cuando hacen click en el boton de una tarjeta de Producto
+for (let boton of botonesComprarProducto) {
+  boton.onclick = () => {
+    agregarProductoAlCarrito();
+  };
+};
+
+const agregarProductoAlCarrito = () => {
+  ocultarCarritoSinProductos();
+  mostrarCarritoConProductos();
+  mostrarBotonesCarrito();
+};
+
+// Oculto la info de que no hay producto en carrito
+const ocultarCarritoSinProductos = () => carritoSinProductos.classList.add('ocultar');
+
+// Muestro los productos del carrito
+const mostrarCarritoConProductos = () => contenedorProductosEnCarrito.classList.remove('ocultar');
+
+// Muestro los botones del carrito
+const mostrarBotonesCarrito = () => botonesCarrito.classList.remove('ocultar');
+
+// Al confirmar vaciar carrito
+// Muesto la info de que no hay producto en carrito
+const mostrarCarritoSinProductos = () => carritoSinProductos.classList.remove('ocultar');
+
+// Oculto los productos del carrito
+const ocultarCarritoConProductos = () => contenedorProductosEnCarrito.classList.add('ocultar');
+
+// Oculto los botones del carrito
+const ocultarBotonesCarrito = () => botonesCarrito.classList.add('ocultar');
+
+
+
+
 
 
 // Proceder a realizar compra
@@ -280,6 +334,7 @@ const mostrarFiltrosEnMedia = () => {
   mostrarIconoCerrarFiltro();
   aparecerFiltro();
   quitarTabControlAlAbrirFiltro();
+  agregarFocus(cerrarFiltros);
 };
 
 abrirFiltros.onclick = () => mostrarFiltrosEnMedia();
@@ -295,6 +350,7 @@ const ocultarFiltrosEnMedia = () => {
   ocultarIconoCerrarFiltro();
   quitarFiltro();
   agregarTabControlAlCerrarFiltro();
+  agregarFocus(abrirFiltros);
 };
 
 cerrarFiltros.onclick = () => ocultarFiltrosEnMedia();
@@ -633,7 +689,7 @@ const quitarTabControlDeLista = lista => {
 const quitarTabControlDeElemento = elemento => elemento.setAttribute('tabindex', '-1');
 
 // Modal del Carrito
-const botonesComprarProducto = document.querySelectorAll('.comprar-producto');
+// botonesComprarProducto
 // botonLimpiarFiltro
 // filtroBusqueda
 // filtroCategorias
@@ -716,3 +772,4 @@ const agregarTabControlAlCerrarFiltro = () => {
   agregarTabControlDeElemento(botonGrilla);
   agregarTabControlDeElemento(botonGrilla)
 };
+

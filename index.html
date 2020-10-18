@@ -20,7 +20,7 @@
     </div>
     <button id="boton-carrito" class="contenedor-icon carrito-btn" aria-label="menu carrito">
       <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-      <h4 aria-live="assertive">Carrito (<span id="carrito-cantidad-productos">0</span> items)</h4>
+      <h4 aria-live="assertive">Carrito (<span class="carrito-cantidad-productos">0</span> items)</h4>
     </button>
   </nav>
   
@@ -641,8 +641,12 @@
       </button>            
     </div>
 
-    <div class="detalle-productos-en-carrito" aria-labelledby="productos-en-carrito">
-      <p id="productos-en-carrito">2 producto(s) agregado(s)</p>
+    <div class="carrito-sin-productos" aria-labelledby="sin-productos">
+      <p id="sin-productos">No tienes productos en el carrito, ¡agrega algunos!</p>
+    </div>
+
+    <div class="detalle-productos-en-carrito ocultar" aria-labelledby="productos-en-carrito">
+      <p id="productos-en-carrito"><span class="carrito-cantidad-productos">2</span> producto(s) agregado(s)</p>
 
       <div class="listado-de-productos">
         <article class="producto-a-comprar" data-id="1">
@@ -689,7 +693,7 @@
       <p aria-live="assertive">Subtotal <span id="subtotal-en-carrito">$172259</span></p>
     </div>
 
-    <div class="contenedor-botones-carrito">
+    <div class="contenedor-botones-carrito ocultar">
       <button id="boton-comprar-carrito" class="botones-carrito comprar-prod"
        aria-label="Comprar Productos">COMPRAR</button>
       <button id="boton-vaciar" class="botones-carrito vaciar-prod"
