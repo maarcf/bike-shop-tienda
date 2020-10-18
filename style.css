@@ -767,8 +767,39 @@ body {
   }
 
   .cancelar-accion, .vaciar-carrito {
-    width: 100%;
+    width: auto;
     margin-bottom: 15px;
+  }
+
+  /* PopUp Finalizar Compra */
+  .popup-finalizar-compra {
+    height: 100%;
+    width: 100%;
+  }
+
+  .popup-finalizar-compra > h2 {
+    margin: 20px 20px 0;
+  }
+
+  .contenedor-informacion-compra {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .formulario-compra {
+    margin: 0 15px;
+  }
+
+  .mensaje-pagar, .contenedor-info-a-pagar > h4 {
+    width: auto;
+  }
+
+  .botones-compra {
+    flex-direction: column;
+  }
+
+  .botones-modal {
+    margin: 15px;
   }
 }
 
