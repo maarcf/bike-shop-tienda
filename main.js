@@ -226,10 +226,8 @@ const realizarVaciarCarrito = () => {
   ocultarOverlay(overlayConfirmarVaciarCarrito);
   agregarFocus(confirmarVaciarCarrito);
   agregarTabDelCarrito();
-  // mostrarCarritoSinProductos();
-  // ocultarCarritoConProductos();
-  // ocultarBotonesCarrito();
   carritoVacio();
+  eliminarProductos();
 }
 
 botonConfirmarVaciar.onclick = () => {
@@ -246,17 +244,28 @@ const botonesComprarProducto = document.querySelectorAll('.comprar-producto');
 const productosCarrito = document.querySelectorAll('.producto-a-comprar');
 
 
-// cuando hacen click en el boton de una tarjeta de Producto
+// Agregar producto al carrito
 for (let boton of botonesComprarProducto) {
   boton.onclick = () => {
-    agregarProductoAlCarrito();
+    agregarProductoAlCarrito(boton);
   };
 };
 
-const agregarProductoAlCarrito = () => {
+const agregarProductoAlCarrito = boton => {
   ocultarCarritoSinProductos();
   mostrarCarritoConProductos();
   mostrarBotonesCarrito();
+  mostrarProductoEnCarrito(boton);
+};
+
+const mostrarProductoEnCarrito = boton => {
+  for (let producto of productosCarrito) {
+    if (producto.dataset.id === boton.dataset.id) {
+      mostrarProducto(producto);
+      contadorProductosEnCarrito();
+      actualizarPrecio();
+    };
+  };
 };
 
 // Oculto la info de que no hay producto en carrito
@@ -284,8 +293,8 @@ const contadorProductosEnCarrito = () => {
   // recorro los contadores de los productos en carrito
   for (let contador of contadoresDeProductosEnCarrito) {
     contador.textContent = contadorProductos(productosCarrito);
-  }
-}
+  };
+};
 
 contadorProductosEnCarrito();
 
@@ -304,13 +313,18 @@ for (let boton of botonesEliminarProducto) {
   };
 };
 
-
 const carritoVacio = () => {
   mostrarCarritoSinProductos();
   ocultarCarritoConProductos();
   ocultarBotonesCarrito();
 };
 
+const eliminarProductos = () => {
+  for (let producto of productosCarrito) {
+    ocultarProducto(producto);
+    contadorProductosEnCarrito();
+  };
+};
 
 // Calcular el Subtotal
 const subtotalCarrito = document.querySelector('#subtotal-en-carrito');
@@ -335,7 +349,7 @@ const actualizarPrecio = () => {
   mostrarSubtotalEnCarrito();
   mostarSubtotal();
   mostrarTotal();
-;}
+};
 
 for (let input of unidadesDeProductos) {
   input.oninput = () => {
