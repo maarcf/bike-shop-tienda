@@ -242,6 +242,8 @@ const contenedorProductosEnCarrito = document.querySelector('.detalle-productos-
 const carritoSinProductos = document.querySelector('.carrito-sin-productos');
 const botonesCarrito = document.querySelector('.contenedor-botones-carrito');
 const botonesComprarProducto = document.querySelectorAll('.comprar-producto');
+const productosCarrito = document.querySelectorAll('.producto-a-comprar');
+
 
 // cuando hacen click en el boton de una tarjeta de Producto
 for (let boton of botonesComprarProducto) {
@@ -276,7 +278,15 @@ const ocultarCarritoConProductos = () => contenedorProductosEnCarrito.classList.
 const ocultarBotonesCarrito = () => botonesCarrito.classList.add('ocultar');
 
 
+// Contar cantidad de productos en el Carrito
+const productosEnCarrito = () => {
+  // recorro los contadores de los productos en carrito
+  for (let contador of contadoresDeProductosEnCarrito) {
+    contador.textContent = contadorProductos(productosCarrito);
+  }
+}
 
+productosEnCarrito();
 
 // Calcular el Subtotal
 const subtotalCarrito = document.querySelector('#subtotal-en-carrito');
@@ -409,8 +419,6 @@ const parrafoDescuento = document.querySelector('.tiene-descuento');
 const parrafoEnvio = document.querySelector('.tiene-envio');
 const parrafoRecargo = document.querySelector('.tiene-recargo');
 const valorTotal = document.getElementById('total-a-pagar');
-// Valor a pagar
-
 
 
 const obtenerGastoEnvio = subtotal => subtotal + 300;
