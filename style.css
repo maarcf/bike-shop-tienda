@@ -754,17 +754,6 @@ body {
     margin-left: 20px;
   }
 
-
-  /* Carrito */
-  .carrito-checkout {
-    width: 100%;
-    transform: translate(100%);
-  }
-
-  .contenedor-botones-carrito {
-    margin-bottom: 20px;
-  }
-
   /* PopUp Vaciar Carrito */
   .popup-vaciar-carrito {
     height: 100%;
@@ -774,6 +763,7 @@ body {
   
   .contenedor-botones-vaciar-carrito {
     flex-direction: column;
+    padding: 0;
   }
 
   .cancelar-accion, .vaciar-carrito {
@@ -782,6 +772,18 @@ body {
   }
 }
 
+
+@media (max-width: 401px) {
+  /* Carrito */
+  .carrito-checkout {
+    width: 100%;
+    transform: translate(100%);
+  }
+
+  .contenedor-botones-carrito {
+    margin-bottom: 20px;
+  }
+}
 
 
 
