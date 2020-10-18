@@ -13,7 +13,7 @@ const contadorProductos = listaProducto => {
   // recorro cada tarjeta de producto
   for(let producto of listaProducto) {
     // reviso que no tenga agregada la clase ocultar
-    if(producto.classList.contains('ocultar') === false) {
+    if(!producto.classList.contains('ocultar')) {
       // sumo un producto al contador
       agregarProducto++;
     };
@@ -279,14 +279,49 @@ const ocultarBotonesCarrito = () => botonesCarrito.classList.add('ocultar');
 
 
 // Contar cantidad de productos en el Carrito
-const productosEnCarrito = () => {
+const contadorproductosEnCarrito = () => {
   // recorro los contadores de los productos en carrito
   for (let contador of contadoresDeProductosEnCarrito) {
     contador.textContent = contadorProductos(productosCarrito);
   }
 }
 
-productosEnCarrito();
+contadorproductosEnCarrito();
+
+// Borrar productos del carrito
+const botonesEliminarProducto = document.querySelectorAll('.eliminar-producto');
+
+for (let boton of botonesEliminarProducto) {
+  boton.onclick = () => {
+    eliminarProducto();
+    contadorproductosEnCarrito();
+    actualizarPrecio();
+  };
+};
+
+const eliminarProducto = () => {
+  // recorro todos los botones del Carrito
+  for (let producto of productosCarrito) {
+    if (sonIguales(producto)){
+      ocultarProducto(producto)
+    }
+      
+  }
+  
+};
+
+const sonIguales = (producto) => {
+  for (let boton of botonesEliminarProducto) {
+    if(boton.dataset.id === producto.dataset.id) {
+      return true
+    }
+  }
+  
+}
+
+
+
+
 
 // Calcular el Subtotal
 const subtotalCarrito = document.querySelector('#subtotal-en-carrito');
@@ -306,14 +341,19 @@ const sumarSubtotalDelCarrito = () => {
 };
 
 // Modificar Subtotal cuando se suman unidades
+const actualizarPrecio = () => {
+  sumarSubtotalDelCarrito();
+  mostrarSubtotalEnCarrito();
+  mostarSubtotal();
+  mostrarTotal();
+;}
+
 for (let input of unidadesDeProductos) {
   input.oninput = () => {
-    sumarSubtotalDelCarrito();
-    mostrarSubtotalEnCarrito();
-    mostarSubtotal();
-    mostrarTotal();
-  }
-}
+    actualizarPrecio();
+  };
+};
+
 
 
 // Subtotal En Carrito
@@ -753,7 +793,7 @@ const quitarTabControlAlAbrirCarrito = () => {
 
 
 // Sacar el tabControl Del Carrito cuando se abre el segundo modal
-const botonesEliminarProducto = document.querySelectorAll('.eliminar-producto');
+// botonesEliminarProducto 
 // botonCerrarCarrito
 // botonRealizarCompra
 // confirmarVaciarCarrito
