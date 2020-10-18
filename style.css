@@ -376,7 +376,6 @@ body {
   background-color: rgba(0,0,0,.6);
   position: fixed;
   top: 0;
-  bottom: 0;
 }
 
 .carrito-checkout {
@@ -775,7 +774,7 @@ body {
   .popup-finalizar-compra {
     height: 100%;
     width: 100%;
-    overflow: scroll;
+ 
   }
 
   .popup-finalizar-compra > h2 {
