@@ -1,3 +1,6 @@
+// Comentarios para Male: las variables están en las respectivas funciones porque la verdad es que de ésta manera
+// me resulta más sencillo que estar haciendo scroll hasta arriba para buscar las cosas. 
+
 // Contador Productos visibibles
 const productosVisibles = document.getElementById('cantidad-productos-visibles');
 const cantidadProductos = document.getElementById('total-de-productos'); // tiene que ser igual a la cantidad de tarjetas que hay
@@ -47,7 +50,7 @@ const listaContenedorProductos = () => {
 // A todosLosProductos hay que sacarle .vista-grilla-tarjeta
 const listaTodosLosProductos = () => {
   // recorro cada producto
-  for(let producto of todosLosProductos) {
+  for (let producto of todosLosProductos) {
     // le saco la clase
     producto.classList.remove('vista-grilla-tarjeta');
   };
@@ -56,7 +59,7 @@ const listaTodosLosProductos = () => {
 // A imagenProducto hay que agregarle .vista-lista-imagen
 const listaImagenes = () => {
   // recorro todas las img
-  for(let imagen of imagenesProductos) {
+  for (let imagen of imagenesProductos) {
     // le agrego la clase al contenedor de la imagen
     imagen.classList.add('vista-lista-imagen');
   };
@@ -65,7 +68,7 @@ const listaImagenes = () => {
 // A informacion producto hay que agregarle .vista-lista-info-producto
 const listaInformacionesProductos = () => {
   //recorro las informaciones
-  for(let info of informacionesProductos) {
+  for (let info of informacionesProductos) {
     //le agrego la clase correspondiente
     info.classList.add('vista-lista-info-producto');
   };
@@ -74,7 +77,7 @@ const listaInformacionesProductos = () => {
 // A la decripcion del producto hay que sacarle la clase ocultar
 const agregarDescipciones = () => {
   // recorro las descripciones
-  for(let descripcion of descripcionesProductos) {
+  for (let descripcion of descripcionesProductos) {
     //le quito la clase que la oculta
     descripcion.classList.remove('ocultar');
   };
@@ -89,9 +92,7 @@ const listarProductos = () => {
   agregarDescipciones();
 };
 
-botonLista.onclick = () => {
-  listarProductos();
-};
+botonLista.onclick = () => listarProductos();
 
 // Para la vista en GRILLA
 // A contenedorProducto hay que quitarle .vista-lista-contenedor 
@@ -104,7 +105,7 @@ const grillaContenedorProductos = () => {
 // A todosLosProductos hay que agregarle .vista-grilla-tarjeta
 const grillaTodosLosProductos = () => {
   // recorro cada producto
-  for(let producto of todosLosProductos) {
+  for (let producto of todosLosProductos) {
     // le agrego la clase
     producto.classList.add('vista-grilla-tarjeta');
   };
@@ -113,7 +114,7 @@ const grillaTodosLosProductos = () => {
 // A imagenProducto hay que quitarle .vista-lista-imagen
 const grillaImagenes = () => {
   // recorro todas las img
-  for(let imagen of imagenesProductos) {
+  for (let imagen of imagenesProductos) {
     // le quito la clase al contenedor de la imagen
     imagen.classList.remove('vista-lista-imagen');
   };
@@ -122,7 +123,7 @@ const grillaImagenes = () => {
 // A informacion producto hay que quitarle .vista-lista-info-producto
 const grillaInformacionesProductos = () => {
   //recorro las informaciones
-  for(let info of informacionesProductos) {
+  for (let info of informacionesProductos) {
     //le quito la clase correspondiente
     info.classList.remove('vista-lista-info-producto');
   };
@@ -131,7 +132,7 @@ const grillaInformacionesProductos = () => {
 // A la decripcion del producto hay que agregarle la clase ocultar
 const ocultarDescipciones = () => {
   // recorro las descripciones
-  for(let descripcion of descripcionesProductos) {
+  for (let descripcion of descripcionesProductos) {
     //le agrego la clase que la oculta
     descripcion.classList.add('ocultar');
   };
@@ -146,9 +147,7 @@ const grillaProductos = () => {
   ocultarDescipciones();
 };
 
-botonGrilla.onclick = () => {
-  grillaProductos();
-};
+botonGrilla.onclick = () => grillaProductos();
 
 
 
@@ -159,9 +158,8 @@ const carritoCompras = document.querySelector('.carrito-checkout');
 const overlayCarrito = document.querySelector('.carrito-overlay');
 
 
-botonAbrirCarrito.onclick = () => {
-mostrarCarrito();
-};
+botonAbrirCarrito.onclick = () => mostrarCarrito();
+
 
 // Aparece overlay, impide scroll, translada el carrito
 const mostrarCarrito = () => {
@@ -176,9 +174,7 @@ const mostrarCarrito = () => {
 // Poner el foco en el carrito
 const focusBtn = () => botonCerrarCarrito.focus();
 
-botonCerrarCarrito.onclick = () => {
-  cerrarCarrito();
-};
+botonCerrarCarrito.onclick = () => cerrarCarrito();
 
 // Oculta el overlay, permite el scroll y translada el carrito
 const cerrarCarrito = () => {
@@ -205,9 +201,8 @@ const abrirPopUpVaciarCarrito = () => {
   quitarTabDelCarrito();
 };
 
-confirmarVaciarCarrito.onclick = () => {
-  abrirPopUpVaciarCarrito();
-};
+confirmarVaciarCarrito.onclick = () => abrirPopUpVaciarCarrito();
+
 
 // si confirma tiene que volver a ocultarse overlay, volver a agregar el tabControl del carrito y cambiar el foco 
 const cerrarPopUpVaciarCarrito = () => {
@@ -216,9 +211,7 @@ const cerrarPopUpVaciarCarrito = () => {
   agregarTabDelCarrito();
 };
 
-botonCancelarVaciar.onclick = () => {
-  cerrarPopUpVaciarCarrito();
-};
+botonCancelarVaciar.onclick = () => cerrarPopUpVaciarCarrito();
 
 // si cancela tiene que volver a ocultarse overlay, volver a agregar el tabControl del carrito, cambiar el foco,
 // mostrar info sin productos en el carrito y ocultar contenedores de producto y botones 
@@ -228,11 +221,9 @@ const realizarVaciarCarrito = () => {
   agregarTabDelCarrito();
   carritoVacio();
   eliminarProductos();
-}
-
-botonConfirmarVaciar.onclick = () => {
-  realizarVaciarCarrito();
 };
+
+botonConfirmarVaciar.onclick = () => realizarVaciarCarrito();
 
 
 // Carrito Funcionalidades avanzadas
@@ -363,7 +354,7 @@ for (let input of unidadesDeProductos) {
 const mostrarSubtotalEnCarrito = () => {
   let subtotal = sumarSubtotalDelCarrito().toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
   subtotalCarrito.textContent = `$ ${subtotal}`;
-}
+};
 
 mostrarSubtotalEnCarrito();
 
@@ -380,9 +371,7 @@ const abrirFinalizarCompra = () => {
   quitarTabDelCarrito();
 };
 
-botonRealizarCompra.onclick = () => {
-  abrirFinalizarCompra();
-};
+botonRealizarCompra.onclick = () => abrirFinalizarCompra();
 
 // Cuando se hace click en finalizar o seguir comprando tiene que desaparecer overlay, poner foco comprar del carrito
 const cerrarFinalizarCompra = () => {
@@ -391,9 +380,7 @@ const cerrarFinalizarCompra = () => {
   agregarTabDelCarrito();
 };
 
-botonSeguirComprando.onclick = () => {
-  cerrarFinalizarCompra();
-};
+botonSeguirComprando.onclick = () => cerrarFinalizarCompra();
 
 
 
@@ -447,7 +434,6 @@ cerrarFiltros.onclick = () => ocultarFiltrosEnMedia();
 
 
 // Finalizar Compra
-
 const valorDescuento = document.querySelector('#valor-descuento');
 const valorEnvio = document.querySelector('#valor-envio');
 const valorRecargo = document.querySelector('#valor-recargo');
@@ -520,9 +506,7 @@ const agregarDescuento = () => {
   valorDescuento.textContent = `-$${precioDescuento}`;
 };
 
-const mostrarDescuento = () => {
-  parrafoDescuento.classList.toggle("ocultar");
-};
+const mostrarDescuento = () => parrafoDescuento.classList.toggle("ocultar");
 
 const agregarRecargo = () => {
   let precioRecargo = obtenerRecargo(sumarSubtotalDelCarrito()) - sumarSubtotalDelCarrito();
@@ -530,17 +514,13 @@ const agregarRecargo = () => {
   valorRecargo.textContent = `$${precioRecargo}`;
 };
 
-const mostrarRecargo = () => {
-  parrafoRecargo.classList.remove("ocultar");
-};
+const mostrarRecargo = () => parrafoRecargo.classList.remove("ocultar");
 
 const agregarEnvio = () => {
   valorEnvio.textContent = `$${obtenerGastoEnvio(sumarSubtotalDelCarrito()) - sumarSubtotalDelCarrito()}`;
 };
 
-const mostrarEnvio = () => {
-  parrafoEnvio.classList.toggle("ocultar");
-};
+const mostrarEnvio = () => parrafoEnvio.classList.toggle("ocultar");
 
 // Le muestro al usuario el subtotal y el valor total
 mostarSubtotal();
@@ -802,7 +782,6 @@ const quitarTabControlAlAbrirCarrito = () => {
 // confirmarVaciarCarrito
 // unidadesDeProductos
 
-
 const quitarTabDelCarrito = () => {
   quitarTabControlDeLista(botonesEliminarProducto);
   quitarTabControlDeLista(unidadesDeProductos);
@@ -860,4 +839,3 @@ const agregarTabControlAlCerrarFiltro = () => {
   agregarTabControlDeElemento(botonGrilla);
   agregarTabControlDeElemento(botonGrilla)
 };
-
