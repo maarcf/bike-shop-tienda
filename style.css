@@ -258,11 +258,13 @@ body {
 .vista-grilla-tarjeta {
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   flex: 1;
 }
 
 .contenedor-imagen {
   margin: 20px;
+  max-width: 350px;
   overflow: hidden;
 }
 
@@ -382,7 +384,7 @@ body {
   padding: 25px; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  flex: 1;
   position: fixed;
   top: 0;
   right: 0;
@@ -411,6 +413,7 @@ body {
 .detalle-productos-en-carrito {
   display: flex;
   flex-direction: column;
+  flex: 2;
 }
 
 .detalle-productos-en-carrito > p {
@@ -671,30 +674,11 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-.no-scroll {
-  overflow-y: hidden;
-}
-
-.ocultar {
-  display: none;
-}
-
-
-
-
 /* ================================
             MEDIA QUERY 
 =================================== */
 
-@media (max-width: 880px) {
+@media (max-width: 895px) {
   .contenedor-filtros-productos {
     position: fixed;
     background-color: #f5f5f5;
@@ -730,17 +714,93 @@ body {
   .contenedor-botones-visualizacion-productos {
     display: none;
   }
+
   .filtro-media {
     display: flex;
+  }
+
+  .filtro-media > i {
+    margin-right: 8px;
   }
 }
 
 @media (max-width: 640px) {
-  .vista-grilla-tarjeta {
-    flex-basis: 200px;
+  .contenedor-logo {
+    flex-basis: 150px;
+    margin: 5px 20px
+  }
+
+  .carrito-btn {
+    margin: 5px 20px
+  }
+
+  .filtro-media {
+    flex-direction: column;
+  }
+
+  .filtro-media > i {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  /* Footer */
+  .contenedor-logo-footer {
+    flex-basis: 80px;
+  }
+
+  .saludo {
+    font-size: 18px;
+    margin-left: 20px;
+  }
+
+
+  /* Carrito */
+  .carrito-checkout {
+    width: 100%;
+    transform: translate(100%);
+  }
+
+  .contenedor-botones-carrito {
+    margin-bottom: 20px;
+  }
+
+  /* PopUp Vaciar Carrito */
+  .popup-vaciar-carrito {
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .contenedor-botones-vaciar-carrito {
+    flex-direction: column;
+  }
+
+  .cancelar-accion, .vaciar-carrito {
+    width: 100%;
+    margin-bottom: 15px;
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+/* CLASES QUE USO DESDE JS */
 .mostrar-filtro, .mostrar-carrito {
   transform: translate(0);
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.ocultar {
+  display: none;
 }
