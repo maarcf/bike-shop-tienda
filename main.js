@@ -226,9 +226,10 @@ const realizarVaciarCarrito = () => {
   ocultarOverlay(overlayConfirmarVaciarCarrito);
   agregarFocus(confirmarVaciarCarrito);
   agregarTabDelCarrito();
-  mostrarCarritoSinProductos();
-  ocultarCarritoConProductos();
-  ocultarBotonesCarrito();
+  // mostrarCarritoSinProductos();
+  // ocultarCarritoConProductos();
+  // ocultarBotonesCarrito();
+  carritoVacio();
 }
 
 botonConfirmarVaciar.onclick = () => {
@@ -279,48 +280,36 @@ const ocultarBotonesCarrito = () => botonesCarrito.classList.add('ocultar');
 
 
 // Contar cantidad de productos en el Carrito
-const contadorproductosEnCarrito = () => {
+const contadorProductosEnCarrito = () => {
   // recorro los contadores de los productos en carrito
   for (let contador of contadoresDeProductosEnCarrito) {
     contador.textContent = contadorProductos(productosCarrito);
   }
 }
 
-contadorproductosEnCarrito();
+contadorProductosEnCarrito();
 
 // Borrar productos del carrito
 const botonesEliminarProducto = document.querySelectorAll('.eliminar-producto');
 
 for (let boton of botonesEliminarProducto) {
   boton.onclick = () => {
-    eliminarProducto();
-    contadorproductosEnCarrito();
+    // Al contenedor lo oculto
+    boton.closest('article').classList.add('ocultar');
+    contadorProductosEnCarrito();
     actualizarPrecio();
+    if (contadorProductos(productosCarrito) === 0) {
+      carritoVacio();
+    };
   };
 };
 
-const eliminarProducto = () => {
-  // recorro todos los botones del Carrito
-  for (let producto of productosCarrito) {
-    if (sonIguales(producto)){
-      ocultarProducto(producto)
-    }
-      
-  }
-  
+
+const carritoVacio = () => {
+  mostrarCarritoSinProductos();
+  ocultarCarritoConProductos();
+  ocultarBotonesCarrito();
 };
-
-const sonIguales = (producto) => {
-  for (let boton of botonesEliminarProducto) {
-    if(boton.dataset.id === producto.dataset.id) {
-      return true
-    }
-  }
-  
-}
-
-
-
 
 
 // Calcular el Subtotal
