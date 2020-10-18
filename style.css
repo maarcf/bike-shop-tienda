@@ -775,6 +775,7 @@ body {
   .popup-finalizar-compra {
     height: 100%;
     width: 100%;
+    overflow: scroll;
   }
 
   .popup-finalizar-compra > h2 {
