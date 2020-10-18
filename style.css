@@ -774,7 +774,7 @@ body {
   .popup-finalizar-compra {
     height: 100%;
     width: 100%;
- 
+    overflow-y: auto;
   }
 
   .popup-finalizar-compra > h2 {
@@ -784,6 +784,7 @@ body {
   .contenedor-informacion-compra {
     flex-direction: column;
     padding: 30px;
+    margin: 0;
   }
 
   .formulario-compra {
