@@ -8,18 +8,20 @@ const cantidadProductosEnTienda = () => {
   cantidadProductos.textContent = todosLosProductos.length;
 };
 
-const contadorProductosVisibles = () => {
+const contadorProductos = listaProducto => {
   let agregarProducto = 0;
   // recorro cada tarjeta de producto
-  for(let producto of todosLosProductos) {
+  for(let producto of listaProducto) {
     // reviso que no tenga agregada la clase ocultar
     if(producto.classList.contains('ocultar') === false) {
       // sumo un producto al contador
       agregarProducto++;
     };
   };
-  productosVisibles.textContent = agregarProducto;
+  return agregarProducto;
 };
+
+const contadorProductosVisibles = () => productosVisibles.textContent = contadorProductos(todosLosProductos);
 
 contadorProductosVisibles();
 cantidadProductosEnTienda();
@@ -276,7 +278,41 @@ const ocultarBotonesCarrito = () => botonesCarrito.classList.add('ocultar');
 
 
 
+// Calcular el Subtotal
+const subtotalCarrito = document.querySelector('#subtotal-en-carrito');
+const unidadesDeProductos = document.querySelectorAll('.cantidad-y-precio-producto > .unidades-a-llevar > input[type="number"]');
 
+const sumarSubtotalDelCarrito = () => {
+  let sumSubtotal = 0
+  // recorro los inputs
+  for (let input of unidadesDeProductos) {
+    // solo si el contenedor de la tarjeta no tiene la clase ocultar
+    if (!input.closest('article').classList.contains('ocultar')) {
+      // realizo la suma para saber cuanto es el subtotal
+    sumSubtotal = sumSubtotal + (input.value * Number(input.dataset.precio));
+    };
+  };
+  return sumSubtotal;
+};
+
+// Modificar Subtotal cuando se suman unidades
+for (let input of unidadesDeProductos) {
+  input.oninput = () => {
+    sumarSubtotalDelCarrito();
+    mostrarSubtotalEnCarrito();
+    mostarSubtotal();
+    mostrarTotal();
+  }
+}
+
+
+// Subtotal En Carrito
+const mostrarSubtotalEnCarrito = () => {
+  let subtotal = sumarSubtotalDelCarrito().toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  subtotalCarrito.textContent = `$ ${subtotal}`;
+}
+
+mostrarSubtotalEnCarrito();
 
 // Proceder a realizar compra
 const botonRealizarCompra = document.getElementById('boton-comprar-carrito');
@@ -374,7 +410,7 @@ const parrafoEnvio = document.querySelector('.tiene-envio');
 const parrafoRecargo = document.querySelector('.tiene-recargo');
 const valorTotal = document.getElementById('total-a-pagar');
 // Valor a pagar
-const subtotal = 172559;
+
 
 
 const obtenerGastoEnvio = subtotal => subtotal + 300;
@@ -418,17 +454,17 @@ const obtenerTotal = subtotal => {
 };
 
 const mostarSubtotal = () => {
-  let preciosubtotal = subtotal.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  let preciosubtotal = sumarSubtotalDelCarrito().toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
   valorSubtotal.textContent = `$${preciosubtotal}`;
 };
 
 const mostrarTotal = () => {
-  let total = obtenerTotal(subtotal).toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
+  let total = obtenerTotal(sumarSubtotalDelCarrito()).toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
   valorTotal.textContent = `$${total}`;
 };
 
 const agregarDescuento = () => {
-  let precioDescuento = subtotal - obtenerDescuento(subtotal);
+  let precioDescuento = sumarSubtotalDelCarrito() - obtenerDescuento(sumarSubtotalDelCarrito());
   precioDescuento = precioDescuento.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
   valorDescuento.textContent = `-$${precioDescuento}`;
 };
@@ -438,7 +474,7 @@ const mostrarDescuento = () => {
 };
 
 const agregarRecargo = () => {
-  let precioRecargo = obtenerRecargo(subtotal) - subtotal;
+  let precioRecargo = obtenerRecargo(sumarSubtotalDelCarrito()) - sumarSubtotalDelCarrito();
   precioRecargo = precioRecargo.toLocaleString('es-AR', { maximumFractionDigits: 2, minimumFractionDigits: 2});
   valorRecargo.textContent = `$${precioRecargo}`;
 };
@@ -448,7 +484,7 @@ const mostrarRecargo = () => {
 };
 
 const agregarEnvio = () => {
-  valorEnvio.textContent = `$${obtenerGastoEnvio(subtotal) - subtotal}`;
+  valorEnvio.textContent = `$${obtenerGastoEnvio(sumarSubtotalDelCarrito()) - sumarSubtotalDelCarrito()}`;
 };
 
 const mostrarEnvio = () => {
@@ -710,10 +746,11 @@ const quitarTabControlAlAbrirCarrito = () => {
 
 // Sacar el tabControl Del Carrito cuando se abre el segundo modal
 const botonesEliminarProducto = document.querySelectorAll('.eliminar-producto');
-const unidadesDeProductos = document.querySelectorAll('.cantidad-y-precio-producto > .unidades-a-llevar > input[type="number"]');
 // botonCerrarCarrito
 // botonRealizarCompra
 // confirmarVaciarCarrito
+// unidadesDeProductos
+
 
 const quitarTabDelCarrito = () => {
   quitarTabControlDeLista(botonesEliminarProducto);
