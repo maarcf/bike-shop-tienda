@@ -238,7 +238,7 @@ const productosCarrito = document.querySelectorAll('.producto-a-comprar');
 // Agregar producto al carrito
 for (let boton of botonesComprarProducto) {
   boton.onclick = () => {
-    agregarProductoAlCarrito(boton);
+    agregarProductoAlCarrito(boton);    
   };
 };
 
@@ -247,6 +247,7 @@ const agregarProductoAlCarrito = boton => {
   mostrarCarritoConProductos();
   mostrarBotonesCarrito();
   mostrarProductoEnCarrito(boton);
+  mensajeBoton(boton);
 };
 
 const mostrarProductoEnCarrito = boton => {
@@ -258,6 +259,15 @@ const mostrarProductoEnCarrito = boton => {
     };
   };
 };
+
+const mensajeBoton = boton => {
+  let modificarMensaje = `<i class="fas fa-cart-plus"></i>`;
+  boton.innerHTML = `Agregando al ${modificarMensaje}`;
+  setTimeout(()=> {
+    boton.innerHTML = `COMPRAR`;
+  }, 1500);
+};
+
 
 // Oculto la info de que no hay producto en carrito
 const ocultarCarritoSinProductos = () => carritoSinProductos.classList.add('ocultar');
